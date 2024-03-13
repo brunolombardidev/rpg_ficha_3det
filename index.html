@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>3 Dados e Teste</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+  }
+  .input-container {
+    margin-bottom: 10px;
+  }
+  #result {
+    font-size: 24px;
+    margin-top: 20px;
+  }
+</style>
+</head>
+<body>
+  <h1>3 Dados e Teste</h1>
+  
+  <div class="input-container" id="dados">
+    <label>
+      <input type="radio" name="dados" value="1" checked> Normal (1D)
+    </label>
+    <label>
+      <input type="radio" name="dados" value="2"> Ganho (2D)
+    </label>
+    <label>
+      <input type="radio" name="dados" value="3"> Mais Ganho (3D)
+    </label>
+  </div>
+
+  <div class="input-container" id="atributos">
+    <label for="power">Poder:</label>
+    <input type="number" id="power"
+    value="0">
+    <input type="number" id="powerCritico" value="6">
+    <button onclick="rollDice('power')">Testar Poder</button>
+  </div>
+
+  <div class="input-container" id="atributos">
+    <label for="skill">Habilidade:</label>
+    <input type="number" id="skill" value="0">
+    <input type="number" id="skillCritico" value="6">
+    <button onclick="rollDice('skill')">Testar Habilidade</button>
+  </div>
+
+  <div class="input-container" id="atributos">
+    <label for="resistance">Resistência:</label>
+    <input type="number" id="resistance" value="0">
+    <input type="number" id="resistanceCritico" value="6">
+    <button onclick="rollDice('resistance')">Testar Resistência</button>
+  </div>
+
+  <div id="result"></div>
+
+  <script>
+    function rollDice(field) {
+      var numberOfDice = parseInt(document.querySelector('input[name="dados"]:checked').value);
+      var bonus = parseInt(document.getElementById(field).value);
+      var critico = parseInt(document.getElementById(field + "Critico").value);
+      var total = 0;
+      var rolls = [];
+
+      for (var i = 0; i < numberOfDice; i++) {
+        var roll = Math.floor(Math.random() * 6) + 1;
+        rolls.push(roll);
+        if (roll >= critico) {
+          total += roll + bonus;
+        } else {
+          total += roll;
+        }
+      }
+
+      var rollsText = rolls.join(', ');
+      var result = "Rolls: "
+      + rollsText + "<br>";
+      result += "Total: " + total;
+
+      document.getElementById("result").innerHTML = result;
+    }
+  </script>
+</body>
+</html>
