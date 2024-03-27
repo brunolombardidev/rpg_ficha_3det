@@ -1,87 +1,210 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>3 Dados e Teste</title>
-<style>
-  body {
-    font-family: Arial, sans-serif;
-    text-align: center;
-  }
-  .input-container {
-    margin-bottom: 10px;
-  }
-  #result {
-    font-size: 24px;
-    margin-top: 20px;
-  }
-</style>
-</head>
-<body>
-  <h1>3 Dados e Teste</h1>
-  
-  <div class="input-container" id="dados">
-    <label>
-      <input type="radio" name="dados" value="1" checked> Normal (1D)
-    </label>
-    <label>
-      <input type="radio" name="dados" value="2"> Ganho (2D)
-    </label>
-    <label>
-      <input type="radio" name="dados" value="3"> Mais Ganho (3D)
-    </label>
-  </div>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dice Roller</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+      }
+      .bloco {
+        margin-bottom: 10px;
+      }
+      input.campos {
+        width: 40px;
+      }
+      label.caracteristica {
+        font-size: 14px;
+        font-weight: bold;
+      }
+      span {
+        font-size: 14px;
+      }
+      #result {
+        margin: 15px;
+        font-size: 16px;
+        font-weight: bold;
+        color:rgb(0, 60, 224);
+      }
+    </style>
+  </head>
+  <body>
 
-  <div class="input-container" id="atributos">
-    <label for="power">Poder:</label>
-    <input type="number" id="power"
-    value="0">
-    <input type="number" id="powerCritico" value="6">
-    <button onclick="rollDice('power')">Testar Poder</button>
-  </div>
+    <h1>3 Dados e Teste</h1>
+    
+    <div class="bloco" id="rolagem">
+      <label>
+        <input type="radio" name="dados" value="1" checked>(1D) Normal
+      </label>
+      <label>
+        <input type="radio" name="dados" value="2">(2D) Ganho
+      </label>
+      <label>
+        <input type="radio" name="dados" value="3">(3D) Mais Ganho
+      </label>
+    </div>
 
-  <div class="input-container" id="atributos">
-    <label for="skill">Habilidade:</label>
-    <input type="number" id="skill" value="0">
-    <input type="number" id="skillCritico" value="6">
-    <button onclick="rollDice('skill')">Testar Habilidade</button>
-  </div>
+    <div id="result"></div>
 
-  <div class="input-container" id="atributos">
-    <label for="resistance">Resistência:</label>
-    <input type="number" id="resistance" value="0">
-    <input type="number" id="resistanceCritico" value="6">
-    <button onclick="rollDice('resistance')">Testar Resistência</button>
-  </div>
+    <h2>Atributos</h2>
 
-  <div id="result"></div>
+    <div class="bloco" id="atributos">
+      <label class="caracteristica" for="poder">Poder</label>
+      <input class="campos" type="number" id="poder" value="0">
+      <input class="campos" type="number" id="poderCritico" value="6" min="1" max="6">
+      <button onclick="rollDice('poder')">Testar Poder</button>
+    </div>
 
-  <script>
-    function rollDice(field) {
-      var numberOfDice = parseInt(document.querySelector('input[name="dados"]:checked').value);
-      var bonus = parseInt(document.getElementById(field).value);
-      var critico = parseInt(document.getElementById(field + "Critico").value);
-      var total = 0;
-      var rolls = [];
+    <div class="bloco" id="atributos">
+      <label class="caracteristica" for="habilidade">Habilidade</label>
+      <input class="campos" type="number" id="habilidade" value="0">
+      <input class="campos" type="number" id="habilidadeCritico" value="6" min="1" max="6">
+      <button onclick="rollDice('habilidade')">Testar Habilidade</button>
+    </div>
 
-      for (var i = 0; i < numberOfDice; i++) {
-        var roll = Math.floor(Math.random() * 6) + 1;
-        rolls.push(roll);
-        if (roll >= critico) {
-          total += roll + bonus;
-        } else {
-          total += roll;
+    <div class="bloco" id="atributos">
+      <label class="caracteristica" for="resistance">Resistência</label>
+      <input class="campos" type="number" id="resistance" value="0">
+      <input class="campos" type="number" id="resistanceCritico" value="6" min="1" max="6">
+      <button onclick="rollDice('resistance')">Testar Resistência</button>
+    </div>
+
+    <h2>Recursos</h2>
+
+    <div class="bloco" id="recursos">
+      <label class="caracteristica" for="action">Pontos de Ação:</label>
+      <span id="paTotal">0</span>
+      <input class="campos" type="number" id="paAtual" value="0">
+      <button onclick="debitarRecurso('paAtual')">Reduzir PA</button>
+    </div>
+
+    <div class="bloco" id="recursos">
+      <label class="caracteristica" for="mana">Pontos de Mana:</label>
+      <span id="pmTotal">0</span>
+      <input class="campos" type="number" id="pmAtual" value="0">
+      <button onclick="debitarRecurso('pmAtual')">Reduzir PM</button>
+    </div>
+
+    <div class="bloco" id="recursos">
+      <label class="caracteristica" for="life">Pontos de Vida:</label>
+      <span id="pvTotal">0</span>
+      <input class="campos" type="number" id="pvAtual" value="0">
+      <button onclick="debitarRecurso('pvAtual')">Reduzir PV</button>
+    </div>
+
+    <button onclick="descansoCurto()">Descanso Curto</button>
+    <button onclick="descansoLongo()">Descanso Longo</button>
+
+    <script>
+      // Função para rolar os dados
+      function rollDice(field) {
+        var numberOfDice = parseInt(document.querySelector('input[name="dados"]:checked').value);
+        var bonus = parseInt(document.getElementById(field).value);
+        var critico = parseInt(document.getElementById(field + "Critico").value);
+        var total = 0;
+        var rolls = [];
+
+        for (var i = 0; i < numberOfDice; i++) {
+          var roll = Math.floor(Math.random() * 6) + 1;
+          rolls.push(roll);
+          if (roll >= critico) {
+            total += roll + bonus;
+          } else {
+            total += roll;
+          }
+        }
+
+        var rollsText = rolls.join(', ');
+        var result = "Rolagem: " + rollsText;
+        result += ", Se Crítico: " + total;
+
+        document.getElementById("result").innerHTML = result;
+      }
+
+      // Função para debitar recursos
+      function debitarRecurso(field) {
+        var valor = prompt("Digite o valor a ser debitado:");
+        if (valor !== null) {
+          var input = document.getElementById(field);
+          var newValue = parseInt(input.value) - parseInt(valor);
+          if (newValue < 0) {
+            alert("O valor não pode ser menor que zero!");
+          } else {
+            input.value = newValue;
+            updateLabels();
+          }
         }
       }
 
-      var rollsText = rolls.join(', ');
-      var result = "Rolls: "
-      + rollsText + "<br>";
-      result += "Total: " + total;
+      // Função para descanso curto
+      function descansoCurto() {
+        var pmInput = document.getElementById("pmAtual");
+        var pvInput = document.getElementById("pvAtual");
+        var habilidadeValue = parseInt(document.getElementById("habilidade").value);
+        var resistanceValue = parseInt(document.getElementById("resistance").value);
+        var maxhabilidade = parseInt(document.getElementById("habilidade").value) * 5;
+        var maxResistance = parseInt(document.getElementById("resistance").value) * 5;
+        var currentPm = parseInt(pmInput.value);
+        var currentPv = parseInt(pvInput.value);
+        var updatedPm = currentPm + habilidadeValue;
+        var updatedPv = currentPv + resistanceValue;
+        pmInput.value = updatedPm <= maxhabilidade ? updatedPm : maxhabilidade;
+        pvInput.value = updatedPv <= maxResistance ? updatedPv : maxResistance;
+        updateLabels();
+      }
 
-      document.getElementById("result").innerHTML = result;
-    }
-  </script>
-</body>
+      // Função para descanso longo
+      function descansoLongo() {
+        var poderValue = parseInt(document.getElementById("poder").value);
+        var habilidadeValue = parseInt(document.getElementById("habilidade").value);
+        var resistanceValue = parseInt(document.getElementById("resistance").value);
+        var maxpoder = parseInt(document.getElementById("poder").value);
+        var maxhabilidade = parseInt(document.getElementById("habilidade").value) * 5;
+        var maxResistance = parseInt(document.getElementById("resistance").value) * 5;
+        document.getElementById("paAtual").value = maxpoder;
+        document.getElementById("pmAtual").value = maxhabilidade;
+        document.getElementById("pvAtual").value = maxResistance;
+        updateLabels();
+      }
+
+      // Selecionando os elementos de input
+      const poderInput = document.getElementById("poder");
+      const habilidadeInput = document.getElementById("habilidade");
+      const resistanceInput = document.getElementById("resistance");
+
+      // Selecionando os elementos de rótulo
+      const paTotalLabel = document.getElementById("paTotal");
+      const paAtualLabel = document.getElementById("paAtual");
+      const pmTotalLabel = document.getElementById("pmTotal");
+      const pmAtualLabel = document.getElementById("pmAtual");
+      const pvTotalLabel = document.getElementById("pvTotal");
+      const pvAtualLabel = document.getElementById("pvAtual");
+
+      // Função para atualizar os rótulos
+      function updateLabels() {
+        // Atualizando rótulos de Pontos de Ação
+        paTotalLabel.textContent = poderInput.value;
+        paAtualLabel.textContent = document.getElementById("paAtual").value;
+
+        // Atualizando rótulos de Pontos de Mana
+        pmTotalLabel.textContent = habilidadeInput.value * 5;
+        pmAtualLabel.textContent = document.getElementById("pmAtual").value;
+
+        // Atualizando rótulos de Pontos de Vida
+        pvTotalLabel.textContent = resistanceInput.value * 5;
+        pvAtualLabel.textContent = document.getElementById("pvAtual").value;
+      }
+
+      // Chamando a função inicialmente para configurar os rótulos corretamente
+      updateLabels();
+
+      // Adicionando event listeners para detectar alterações nos campos numéricos
+      poderInput.addEventListener("input", updateLabels);
+      habilidadeInput.addEventListener("input", updateLabels);
+      resistanceInput.addEventListener("input", updateLabels);
+    </script>
+
+  </body>
 </html>
