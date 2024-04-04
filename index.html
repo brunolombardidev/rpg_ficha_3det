@@ -1,101 +1,254 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dice Roller</title>
-    <style>
-      body {
-        font-family: Arial, sans-serif;
-        text-align: center;
-      }
-      .bloco {
-        margin-bottom: 10px;
-      }
-      input.campos {
-        width: 40px;
-      }
-      label.caracteristica {
-        font-size: 14px;
-        font-weight: bold;
-      }
-      span {
-        font-size: 14px;
-      }
-      #result {
-        margin: 15px;
-        font-size: 16px;
-        font-weight: bold;
-        color:rgb(0, 60, 224);
-      }
-    </style>
-  </head>
-  <body>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3 Dados e Teste</title>
+  <style>
+    body {
+      margin: 20px;
+      padding: 0px;
+      background-color: black;
+      color: black;
+      font-family: Arial, sans-serif;
+      font-size: 12px;
+      text-align: top;
+    }
+    div.container {
+      background-color: white;
+      border-radius: 15px;
 
-    <h1>3 Dados e Teste</h1>
-    
-    <div class="bloco" id="rolagem">
-      <label>
-        <input type="radio" name="dados" value="1" checked>(1D) Normal
-      </label>
-      <label>
-        <input type="radio" name="dados" value="2">(2D) Ganho
-      </label>
-      <label>
-        <input type="radio" name="dados" value="3">(3D) Mais Ganho
-      </label>
-    </div>
+      display: flex;
+    }
+    div.containerEsquerdo {
+      margin: 10px;
+      margin-right: 5px;
+      padding: 10px;
+      width: 340px;
+      display: inline-block;
+      justify-content: left;
+    }
+    div.containerDireito {
+      margin: 10px;
+      margin-left: 5px;
+      padding: 10px;
+      width: 500px;
+      display: inline-block;
+      justify-content: left;
+    }
+    h2 {
+      font-size: 16px;
+      margin-top: 20px;
+      margin-bottom: 10px;
+      padding: 0px;
+    }
+    img.logotipo {
+      width: 180px;
+    }
+    input.caixaPequena {
+      margin: 0px;
+      padding: 0px;
+      width: 20px;
+    }
+    input.campoCurto {
+      margin-bottom: 8px;
+      padding: 3px;
+      width: 30px;
+      font-size: 12px;
+    }
+    input.campoMedio {
+      margin-bottom: 4px;
+      padding: 3px;
+      width: 220px;
+      font-size: 12px;
+    }
+    input.campoLongo {
+      margin-bottom: 4px;
+      padding: 3px;
+      width: 95%;
+      font-size: 12px;
+    }
+    label.textoPequeno {
+      font-size: 10px;
+    }
+    label.textoGrande {
+      font-size: 14px;
+    }
+    label.caracteristica {
+      font-weight: bold;
+    }
+    button {
+      margin: 2px;
+      padding: 3px;
+      font-size: 12px;
+    }
+    #result {
+      margin: 10px;
+      font-size: 18px;
+      font-weight: bold;
+      color: rgb(0, 60, 224);
+    }
+    table {
+      margin: 0px;
+      padding: 0px;
+      text-align: left;
+    }
+  </style>
+</head>
+<body>
 
-    <div id="result"></div>
+  <div class="container">
 
-    <h2>Atributos</h2>
+    <div class="containerEsquerdo">
 
-    <div class="bloco" id="atributos">
-      <label class="caracteristica" for="poder">Poder</label>
-      <input class="campos" type="number" id="poder" value="0">
-      <input class="campos" type="number" id="poderCritico" value="6" min="1" max="6">
-      <button onclick="rollDice('poder')">Testar Poder</button>
-    </div>
+      <img class="logotipo" src="src/img/logo-3det.png">
 
-    <div class="bloco" id="atributos">
-      <label class="caracteristica" for="habilidade">Habilidade</label>
-      <input class="campos" type="number" id="habilidade" value="0">
-      <input class="campos" type="number" id="habilidadeCritico" value="6" min="1" max="6">
-      <button onclick="rollDice('habilidade')">Testar Habilidade</button>
-    </div>
+  <h2>Rolagem</h2>
+  <div class="bloco" id="rolagem">
 
-    <div class="bloco" id="atributos">
-      <label class="caracteristica" for="resistance">Resistência</label>
-      <input class="campos" type="number" id="resistance" value="0">
-      <input class="campos" type="number" id="resistanceCritico" value="6" min="1" max="6">
-      <button onclick="rollDice('resistance')">Testar Resistência</button>
-    </div>
+    <label class="textoGrande"><input type="radio" name="dados" value="1" checked>(1D) Normal</label>
+    <label class="textoGrande"><input type="radio" name="dados" value="2">(2D) Ganho</label>
+    <label class="textoGrande"><input type="radio" name="dados" value="3">(3D) Mais Ganho</label>
+  </div>
 
-    <h2>Recursos</h2>
+  <div id="result"></div>
 
-    <div class="bloco" id="recursos">
-      <label class="caracteristica" for="action">Pontos de Ação:</label>
-      <span id="paTotal">0</span>
-      <input class="campos" type="number" id="paAtual" value="0">
-      <button onclick="debitarRecurso('paAtual')">Reduzir PA</button>
-    </div>
+  <h2>Atributos</h2>
 
-    <div class="bloco" id="recursos">
-      <label class="caracteristica" for="mana">Pontos de Mana:</label>
-      <span id="pmTotal">0</span>
-      <input class="campos" type="number" id="pmAtual" value="0">
-      <button onclick="debitarRecurso('pmAtual')">Reduzir PM</button>
-    </div>
+  <div class="bloco" id="atributos">
+    <label class="caracteristica" for="poder">Poder</label>
+    <input class="campoCurto" type="number" id="poder" value="0">
+    <input class="campoCurto" type="number" id="poderCritico" value="6" min="1" max="6">
+    <button onclick="rollDice('poder')">Testar (P)</button>
+  </div>
 
-    <div class="bloco" id="recursos">
-      <label class="caracteristica" for="life">Pontos de Vida:</label>
-      <span id="pvTotal">0</span>
-      <input class="campos" type="number" id="pvAtual" value="0">
-      <button onclick="debitarRecurso('pvAtual')">Reduzir PV</button>
-    </div>
+  <div class="bloco" id="atributos">
+    <label class="caracteristica" for="habilidade">Habilidade</label>
+    <input class="campoCurto" type="number" id="habilidade" value="0">
+    <input class="campoCurto" type="number" id="habilidadeCritico" value="6" min="1" max="6">
+    <button onclick="rollDice('habilidade')">Testar (H)</button>
+  </div>
 
-    <button onclick="descansoCurto()">Descanso Curto</button>
-    <button onclick="descansoLongo()">Descanso Longo</button>
+  <div class="bloco" id="atributos">
+    <label class="caracteristica" for="resistance">Resistência</label>
+    <input class="campoCurto" type="number" id="resistance" value="0">
+    <input class="campoCurto" type="number" id="resistanceCritico" value="6" min="1" max="6">
+    <button onclick="rollDice('resistance')">Testar (R)</button>
+  </div>
+
+  <h2>Recursos</h2>
+
+  <div class="bloco" id="recursos">
+    <label class="caracteristica" for="action">Pontos de Ação:</label>
+    <span id="paTotal">0</span>
+    <input class="campoCurto" type="number" id="paAtual" value="0">
+    <button onclick="debitarRecurso('paAtual')">Reduzir (PA)</button>
+  </div>
+
+  <div class="bloco" id="recursos">
+    <label class="caracteristica" for="mana">Pontos de Mana:</label>
+    <span id="pmTotal">0</span>
+    <input class="campoCurto" type="number" id="pmAtual" value="0">
+    <button onclick="debitarRecurso('pmAtual')">Reduzir (PM)</button>
+  </div>
+
+  <div class="bloco" id="recursos">
+    <label class="caracteristica" for="life">Pontos de Vida:</label>
+    <span id="pvTotal">0</span>
+    <input class="campoCurto" type="number" id="pvAtual" value="0">
+    <button onclick="debitarRecurso('pvAtual')">Reduzir (PV)</button>
+  </div>
+
+  <button onclick="descansoCurto()">Descanso Curto</button>
+  <button onclick="descansoLongo()">Descanso Longo</button>
+
+  <h2>Perícias</h2>
+
+  <div class="bloco" id="pericias">
+    <table class="bloco" id="pericias">
+      <tr>
+        <td><label class="textoPequeno"><input type="checkbox" name="pericia" value="Animais">Animais</label></td>
+        <td><label class="textoPequeno"><input type="checkbox" name="pericia" value="Arte">Arte</label></td>
+        <td><label class="textoPequeno"><input type="checkbox" name="pericia" value="Esporte">Esporte</label></td>
+        <td><label class="textoPequeno"><input type="checkbox" name="pericia" value="Influência">Influência</label></td>
+      </tr>
+      <tr>
+        <td><label class="textoPequeno"><input type="checkbox" name="pericia" value="Luta">Luta</label></td>
+        <td><label class="textoPequeno"><input type="checkbox" name="pericia" value="Manha">Manha</label></td>
+        <td><label class="textoPequeno"><input type="checkbox" name="pericia" value="Máquinas">Máquinas</label></td>
+        <td><label class="textoPequeno"><input type="checkbox" name="pericia" value="Medicina">Medicina</label></td>
+      </tr>
+      <tr>
+        <td><label class="textoPequeno"><input type="checkbox" name="pericia" value="Mística">Mística</label></td>
+        <td><label class="textoPequeno"><input type="checkbox" name="pericia" value="Percepção">Percepção</label></td>
+        <td><label class="textoPequeno"><input type="checkbox" name="pericia" value="Saber">Saber</label></td>
+        <td><label class="textoPequeno"><input type="checkbox" name="pericia" value="Sustento">Sustento</label></td>
+      </tr>
+    </table>
+  </div>
+
+</div>
+<div class="containerDireito">
+
+  <label class="caracteristica" for="nome">Nome</label>
+  <input class="campoMedio" type="text" id="nome" name="nome"><br>
+
+  <label class="caracteristica" for="nome">Arquétipo</label>
+  <input class="campoMedio" type="text" id="arquetipo" name="arquetipo">
+  
+  <div id="nivel" class="bloco">
+    <label class="caracteristica" for="xp">XP</label>
+    <input class="caixaPequena" type="checkbox" id="xp1" name="xp" value="1">
+    <input class="caixaPequena" type="checkbox" id="xp2" name="xp" value="2">
+    <input class="caixaPequena" type="checkbox" id="xp3" name="xp" value="3">
+    <input class="caixaPequena" type="checkbox" id="xp4" name="xp" value="4">
+    <input class="caixaPequena" type="checkbox" id="xp5" name="xp" value="5">
+    <input class="caixaPequena" type="checkbox" id="xp6" name="xp" value="6">
+    <input class="caixaPequena" type="checkbox" id="xp7" name="xp" value="7">
+    <input class="caixaPequena" type="checkbox" id="xp8" name="xp" value="8">
+    <input class="caixaPequena" type="checkbox" id="xp9" name="xp" value="9">
+    <input class="caixaPequena" type="checkbox" id="xp10" name="xp" value="10">
+    <button onclick="desmarcarTodos('xp')">UPAR!</button>
+
+    <label class="caracteristica" for="xp">Pontos</label>
+    <input class="campoCurto" type="number" id="xpValor" value="10">
+  </div>
+
+  <h2>Vantagens</h2>
+  <div id="vantagens" class="bloco">
+    <input class="campoLongo" type="text" id="vantagem1" name="vantagem">
+    <input class="campoLongo" type="text" id="vantagem2" name="vantagem">
+    <input class="campoLongo" type="text" id="vantagem3" name="vantagem">
+    <input class="campoLongo" type="text" id="vantagem4" name="vantagem">
+    <input class="campoLongo" type="text" id="vantagem5" name="vantagem">
+    <input class="campoLongo" type="text" id="vantagem6" name="vantagem">
+    <input class="campoLongo" type="text" id="vantagem7" name="vantagem">
+    <input class="campoLongo" type="text" id="vantagem8" name="vantagem">
+    <input class="campoLongo" type="text" id="vantagem9" name="vantagem">
+    <input class="campoLongo" type="text" id="vantagem10" name="vantagem">
+  </div>
+
+  <h2>Desvantagens</h2>
+  <div id="desvantagens" class="bloco">
+    <input class="campoLongo" type="text" id="desvantagem1" name="desvantagem">
+    <input class="campoLongo" type="text" id="desvantagem2" name="desvantagem">
+    <input class="campoLongo" type="text" id="desvantagem3" name="desvantagem">
+    <input class="campoLongo" type="text" id="desvantagem4" name="desvantagem">
+  </div>
+
+  <h2>Técnicas</h2>
+  <div id="tecnicas" class="bloco">
+    <input class="campoLongo" type="text" id="tecnica1" name="tecnica">
+    <input class="campoLongo" type="text" id="tecnica2" name="tecnica">
+    <input class="campoLongo" type="text" id="tecnica3" name="tecnica">
+    <input class="campoLongo" type="text" id="tecnica4" name="tecnica">
+    <input class="campoLongo" type="text" id="tecnica5" name="tecnica">
+    <input class="campoLongo" type="text" id="tecnica6" name="tecnica">
+  </div>
+  
+</div>
+
+</div>
 
     <script>
       // Função para rolar os dados
@@ -117,8 +270,8 @@
         }
 
         var rollsText = rolls.join(', ');
-        var result = "Rolagem: " + rollsText;
-        result += ", Se Crítico: " + total;
+        var result = "Rolagens: " + rollsText;
+        result += " com Críticos: " + total;
 
         document.getElementById("result").innerHTML = result;
       }
@@ -160,10 +313,10 @@
         var poderValue = parseInt(document.getElementById("poder").value);
         var habilidadeValue = parseInt(document.getElementById("habilidade").value);
         var resistanceValue = parseInt(document.getElementById("resistance").value);
-        var maxpoder = parseInt(document.getElementById("poder").value);
+        var macaixaPequenaoder = parseInt(document.getElementById("poder").value);
         var maxhabilidade = parseInt(document.getElementById("habilidade").value) * 5;
         var maxResistance = parseInt(document.getElementById("resistance").value) * 5;
-        document.getElementById("paAtual").value = maxpoder;
+        document.getElementById("paAtual").value = macaixaPequenaoder;
         document.getElementById("pmAtual").value = maxhabilidade;
         document.getElementById("pvAtual").value = maxResistance;
         updateLabels();
@@ -200,10 +353,17 @@
       // Chamando a função inicialmente para configurar os rótulos corretamente
       updateLabels();
 
-      // Adicionando event listeners para detectar alterações nos campos numéricos
+      // Adicionando event listeners para detectar alterações nos numeros numéricos
       poderInput.addEventListener("input", updateLabels);
       habilidadeInput.addEventListener("input", updateLabels);
       resistanceInput.addEventListener("input", updateLabels);
+
+      function desmarcarTodos(groupName) {
+        var checkboxes = document.getElementsByName(groupName);
+        checkboxes.forEach(function(checkbox) {
+          checkbox.checked = false;
+        });
+      }
     </script>
 
   </body>
