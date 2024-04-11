@@ -4,367 +4,721 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>3 Dados e Teste</title>
-  <style>
-    body {
-      margin: 20px;
-      padding: 0px;
-      background-color: black;
-      color: black;
-      font-family: Arial, sans-serif;
-      font-size: 12px;
-      text-align: top;
-    }
-    div.container {
-      background-color: white;
-      border-radius: 15px;
-
-      display: flex;
-    }
-    div.containerEsquerdo {
-      margin: 10px;
-      margin-right: 5px;
-      padding: 10px;
-      width: 340px;
-      display: inline-block;
-      justify-content: left;
-    }
-    div.containerDireito {
-      margin: 10px;
-      margin-left: 5px;
-      padding: 10px;
-      width: 500px;
-      display: inline-block;
-      justify-content: left;
-    }
-    h2 {
-      font-size: 16px;
-      margin-top: 20px;
-      margin-bottom: 10px;
-      padding: 0px;
-    }
-    img.logotipo {
-      width: 180px;
-    }
-    input.caixaPequena {
-      margin: 0px;
-      padding: 0px;
-      width: 20px;
-    }
-    input.campoCurto {
-      margin-bottom: 8px;
-      padding: 3px;
-      width: 30px;
-      font-size: 12px;
-    }
-    input.campoMedio {
-      margin-bottom: 4px;
-      padding: 3px;
-      width: 220px;
-      font-size: 12px;
-    }
-    input.campoLongo {
-      margin-bottom: 4px;
-      padding: 3px;
-      width: 95%;
-      font-size: 12px;
-    }
-    label.textoPequeno {
-      font-size: 10px;
-    }
-    label.textoGrande {
-      font-size: 14px;
-    }
-    label.caracteristica {
-      font-weight: bold;
-    }
-    button {
-      margin: 2px;
-      padding: 3px;
-      font-size: 12px;
-    }
-    #result {
-      margin: 10px;
-      font-size: 18px;
-      font-weight: bold;
-      color: rgb(0, 60, 224);
-    }
-    table {
-      margin: 0px;
-      padding: 0px;
-      text-align: left;
-    }
-  </style>
 </head>
+<style>
+
+  body {
+    margin: 20px;
+    padding: 0px;
+    background-color: #000000;
+    color: #000000;
+    font-family:Arial, Helvetica, sans-serif;
+    font-size: 10px;
+  }
+
+  /* Imagens e Icones */
+
+  img.logotipo {
+    margin: 0px 10px;
+    width: 160px;
+  }
+
+  img.avatar {
+    margin: 0px 10px;
+    padding: 0px;
+    width: 75px;
+    border: 2px solid #eee;
+    border-radius: 5px;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  img.icone {
+    margin: 0px 5px 0px 8px;
+    padding-left: 0px;
+    height: 15px;
+    vertical-align: middle;
+  }
+
+  img.dseis {
+    margin: 0px 3px 0px 10px;
+    padding: 0px;
+    height: 15px;
+    vertical-align: middle;
+  }
+
+  /* Estrutura da Pagina */
+
+  .ficha {
+    margin: 0 auto;
+    padding: 15px 10px;
+    width: 750px;
+    background-color: #fff;
+    border-radius: 15px;
+  }
+
+  .colEsquerda {
+    flex: 1;
+    margin: 0px;
+    padding: 0px 10px;
+    max-width: 280px;
+  }
+
+  .colDireita {
+    flex: 1;
+    margin: 0px;
+    padding: 0px 10px;
+    max-width: 450px;
+  }
+
+  .blocoLinear {
+    margin: 0px;
+    padding: 0px;
+    display: flex;
+    flex-direction: row;
+    vertical-align: middle;
+    align-items: center;
+  }
+
+  .fichaRolagens {
+    margin: 5px 0px 0px 0px;
+    padding: 10px;
+    width: 96%;
+    height: 40px;
+    border-radius: 5px;
+    background-color: #eeeeee;
+    display: flex;
+    align-items:center;
+  }
+
+  .subsessao {
+    margin: 10px 3px 0px 0px;
+    padding: 10px 15px;
+    border-radius: 5px;
+    background: #eee;
+    display: inline-block;
+    text-align: center;
+  }
+
+  .itemPericia {
+    margin: 0px;
+    padding: 0px;
+    width: 80px;
+    display: inline-block;
+  }
+
+  /* Visual do Texto */
+
+  .titulo {
+    margin: 5px 5px 0px 0px;
+    padding: 5px;
+    font-size: 18px;
+    font-weight: bold;
+  }
+
+  .subtitulo {
+    margin: 0px 10px;
+    padding: 0px;
+    width: 25px;
+    font-size: 14px;
+    font-weight: bold;
+  }
+
+  .texticulo {
+    margin: 2px;
+    padding: 0px;
+    cursor: pointer;
+  }
+
+  #result {
+    margin: 10px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #00A3FF;
+  }
+
+  .recursoTotal {
+    margin: 0px 2px;
+    padding: 4px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    width: 32px;
+    background-color: #eee;
+    font-size: 12px;
+    font-weight: bold;
+  }
+
+  /* Objetos Personalizados */
+
+  .rotulo {
+    margin: 0px;
+    padding: 0px;
+    min-width: 110px;
+    min-height: 25px;
+    border: 0px;
+    border-radius: 15px;
+    color: #fff;
+    font-size: 12px;
+    font-weight: bold;
+    text-align: left;
+    vertical-align:middle;
+    display: inline-block;
+    cursor: pointer;
+  }
+
+  .botaoDados {
+    background-color: #00A3FF;
+  }
+
+  .podAcao {
+    background-color: orange;
+  }
+
+  .habMana {
+    background-color: purple;
+  }
+
+  .resVida {
+    background-color: green;
+  }
+
+  /* Botão e Campos */
+
+  button {
+    margin: 1px;
+    padding: 3px;
+    background-color: #ddd;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    height: 24px;
+    font-size: 12px;
+    color: #999;
+    cursor: pointer;
+  }
+
+  input.campo {
+    margin: 2px;
+    padding: 0px 5px;
+    height: 22px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    font-size: 12px;
+  }
+  .completo { min-width: 96%; }
+  .medio { width: 46%; }
+  .curto {
+    width: 30px;
+    text-align: center;
+  }
+
+  ::placeholder {
+    color: #ddd;
+    opacity: 1; /* Firefox */
+  }
+
+  input.formas {
+    margin: 5px 2px;
+    padding: 0px;
+    vertical-align: middle;
+    cursor: pointer;
+  }
+
+  textarea {
+    margin: 2px;
+    padding: 4px;
+    width: 100%;
+    height: 15px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    background-color: #fff;
+    font-size: 12px;
+    line-height: 20px;
+    cursor: default;
+    resize: none;
+    overflow: hidden;
+    transition: height 0.3s ease;
+  }
+
+</style>
 <body>
 
-  <div class="container">
+  <div class="ficha">
+    <section class="fichaTopo blocoLinear">
 
-    <div class="containerEsquerdo">
+      <div class="colEsquerda blocoLinear">
+        <img class="logotipo" src="src/img/logo-3det-preto.png" />
+        <img class="avatar" src="src/img/avatar-image.jpg" />
+      </div>
 
-      <img class="logotipo" src="src/img/logo-3det.png">
+      <div class="colDireita">
 
-  <h2>Rolagem</h2>
-  <div class="bloco" id="rolagem">
+        <input class="campo completo" type="text" id="nome" name="nome" placeholder="Nome"><br>
+        <input class="campo medio" type="text" id="arquetipo" name="arquetipo" placeholder="Arquetipo">
+        <input class="campo medio" type="text" id="kits" name="kits" placeholder="Kits">
+        
+        <div id="nivel" class="bloco">
+          <span class="subtitulo">XP</span>
+          <input  class="formas" type="checkbox" id="xp1" name="xp" value="1">
+          <input class="formas" type="checkbox" id="xp2" name="xp" value="2">
+          <input class="formas" type="checkbox" id="xp3" name="xp" value="3">
+          <input class="formas" type="checkbox" id="xp4" name="xp" value="4">
+          <input class="formas" type="checkbox" id="xp5" name="xp" value="5">
+          <input class="formas" type="checkbox" id="xp6" name="xp" value="6">
+          <input class="formas" type="checkbox" id="xp7" name="xp" value="7">
+          <input class="formas" type="checkbox" id="xp8" name="xp" value="8">
+          <input class="formas" type="checkbox" id="xp9" name="xp" value="9">
+          <input class="formas" type="checkbox" id="xp10" name="xp" value="10">
+          <button onclick="desmarcarTodos('xp')">UPAR!</button>
+          <span class="subtitulo">Pontos</span>
+          <input class="campo curto" type="number" id="xpValor" value="10">
+        </div>
 
-    <label class="textoGrande"><input type="radio" name="dados" value="1" checked>(1D) Normal</label>
-    <label class="textoGrande"><input type="radio" name="dados" value="2">(2D) Ganho</label>
-    <label class="textoGrande"><input type="radio" name="dados" value="3">(3D) Mais Ganho</label>
+      </div>
+
+    </section>
+    <section class="fichaRolagens">
+
+      <div id="rolagem">
+        <img class="dseis" src="./src/img/icone-dado3.png" />
+        <span class="subtitulo">Rolador</span>
+        <label>
+          <input class="caixinha" type="checkbox" name="dharma" value="ganho">
+          <span class="texticulo">Dharma</span>
+        </label>
+        <label class="rotulo botaoDados">
+          <input class="formas" type="radio" name="dados" value="1" checked>Normal (1D)
+        </label>
+        <label class="rotulo botaoDados">
+          <input class="formas" type="radio" name="dados" value="2">Ganho (2D)
+        </label>
+        <label class="rotulo botaoDados">
+          <input class="formas" type="radio" name="dados" value="3">+Ganho (3D)
+        </label>
+      </div>
+      <div id="result"></div>
+
+    </section>
+    <section class="fichaBase blocoLinear">
+
+      <div class="colEsquerda">
+    
+        <div class="blocoLinear">
+          <span class="titulo">Atributos</span>
+          <span class="texticulo">Pontos | Crítico | Temp</span>
+        </div>
+
+        <div class="blocoLinear" id="blocoAtributos">
+          <button class="rotulo podAcao" onclick="rollDice('poder')">
+            <img class="icone" src="./src/img/icone-atr-poder.png"/>Poder
+          </button>
+          <input class="campo curto" type="number" id="poder" value="0">
+          <input class="campo curto" type="number" id="poderCritico" value="6" min="1" max="6">
+          <input class="campo curto" type="number" id="poderTemp" value="0">
+        </div>
+    
+        <div class="blocoLinear" id="blocoAtributos">
+          <button class="rotulo habMana" onclick="rollDice('habilidade')">
+            <img class="icone" src="./src/img/icone-atr-habilidade.png"/>Habilidade
+          </button>
+          <input class="campo curto" type="number" id="habilidade" value="0">
+          <input class="campo curto" type="number" id="habilidadeCritico" value="6" min="1" max="6">
+          <input class="campo curto" type="number" id="habilidadeTemp" value="0">
+        </div>
+    
+        <div class="blocoLinear" id="blocoAtributos">
+          <button class="rotulo resVida" onclick="rollDice('resistance')">
+            <img class="icone" src="./src/img/icone-atr-resistencia.png"/>Resistência
+          </button>
+          <input class="campo curto" type="number" id="resistance" value="0">
+          <input class="campo curto" type="number" id="resistanceCritico" value="6" min="1" max="6">
+          <input class="campo curto" type="number" id="resistanceTemp" value="0">
+        </div>
+    
+        <div class="blocoLinear">
+          <span class="titulo">Recursos</span>
+          <span class="texticulo">Totais | Atuais | Extra</span>
+        </div>
+    
+        <div class="blocoLinear" id="blocoRecursos">
+          <button class="rotulo podAcao" for="action" onclick="debitarRecurso('paAtual')">
+            <img class="icone" src="./src/img/icone-rec-acao.png"/>Pts de Ação
+          </button>
+          <span class="recursoTotal" id="paTotal">0</span>
+          <input class="campo curto" type="number" id="paAtual" value="0">
+          <input class="campo curto" type="number" id="paExtra" value="0">
+        </div>
+    
+        <div class="blocoLinear" id="blocoRecursos">
+          <button class="rotulo habMana" for="mana" onclick="debitarRecurso('pmAtual')">
+            <img class="icone" src="./src/img/icone-rec-mana.png"/>Pts de Mana
+          </button>
+          <span class="recursoTotal" id="pmTotal">0</span>
+          <input class="campo curto" type="number" id="pmAtual" value="0">
+          <input class="campo curto" type="number" id="pmExtra" value="0">
+        </div>
+    
+        <div class="blocoLinear" id="blocoRecursos">
+          <button class="rotulo resVida" for="life" onclick="debitarRecurso('pvAtual')">
+            <img class="icone" src="./src/img/icone-rec-vida.png"/>Pts de Vida
+          </button>
+          <span class="recursoTotal" id="pvTotal">0</span>
+          <input class="campo curto" type="number" id="pvAtual" value="0">
+          <input class="campo curto" type="number" id="pvExtra" value="0">
+        </div>
+
+        <div class="subsessao" id="descansos">
+          <span class="subtitulo">Descansos</span>
+          <button onclick="descansoCurto()">Curto</button>
+          <button onclick="descansoLongo()">Longo</button>
+          <img class="icone" src="./src/img/icone-rec-descanso.png"/>
+        </div>
+
+        <div class="blocoLinear">
+          <span class="titulo">Perícias</span>
+        </div>
+
+        <div id="pericias">
+
+          <div class="itemPericia">
+            <label>
+              <input class="formas" type="checkbox" name="pericia" value="Animais">
+              <span class="texticulo">Animais</span>
+            </label>
+          </div>
+          <div class="itemPericia">
+            <label>
+              <input class="formas" type="checkbox" name="pericia" value="Arte">
+              <span class="texticulo">Arte</span>
+            </label>
+          </div>
+          <div class="itemPericia">
+            <label>
+              <input class="formas" type="checkbox" name="pericia" value="Esporte">
+              <span class="texticulo">Esporte</span>
+            </label>
+          </div>
+          <div class="itemPericia">
+            <label>
+              <input class="formas" type="checkbox" name="pericia" value="Influência">
+              <span class="texticulo">Influência</span>
+            </label>
+          </div>
+          <div class="itemPericia">
+            <label>
+              <input class="formas" type="checkbox" name="pericia" value="Luta">
+              <span class="texticulo">Luta</span>
+            </label>
+          </div>
+          <div class="itemPericia">
+            <label>
+              <input class="formas" type="checkbox" name="pericia" value="Manha">
+              <span class="texticulo">Manha</span>
+            </label>
+          </div>
+          <div class="itemPericia">
+            <label>
+              <input class="formas" type="checkbox" name="pericia" value="Máquinas">
+              <span class="texticulo">Máquinas</span>
+            </label>
+          </div>
+          <div class="itemPericia">
+            <label>
+              <input class="formas" type="checkbox" name="pericia" value="Medicina">
+              <span class="texticulo">Medicina</span>
+            </label>
+          </div>
+          <div class="itemPericia">
+            <label>
+              <input class="formas" type="checkbox" name="pericia" value="Mística">
+              <span class="texticulo">Mística</span>
+            </label>
+          </div>
+          <div class="itemPericia">
+            <label>
+              <input class="formas" type="checkbox" name="pericia" value="Percepção">
+              <span class="texticulo">Percepção</span>
+            </label>
+          </div>
+          <div class="itemPericia">
+            <label>
+              <input class="formas" type="checkbox" name="pericia" value="Saber">
+              <span class="texticulo">Saber</span>
+            </label>
+          </div>
+          <div class="itemPericia">
+            <label>
+              <input class="formas" type="checkbox" name="pericia" value="Sustento">
+              <span class="texticulo">Sustento</span>
+            </label>
+          </div>
+
+        </div>
+
+        <div class="blocoLinear">
+          <span class="titulo">Inventário</span>
+        </div>
+
+        <div id="inventario">
+          <input class="campo completo" type="text" id="inventario1" name="inventario">
+          <input class="campo completo" type="text" id="inventario2" name="inventario">
+          <input class="campo completo" type="text" id="inventario3" name="inventario">
+          <input class="campo completo" type="text" id="inventario4" name="inventario">
+          <input class="campo completo" type="text" id="inventario5" name="inventario">
+          <input class="campo completo" type="text" id="inventario6" name="inventario">
+        </div>
+        <div class="subsessao" id="inventario">
+          <span class="texticulo">Comum</span><br/>
+          <input class="caixinha" type="checkbox" id="inventarioCom1" name="inventarioCom">
+          <input class="caixinha" type="checkbox" id="inventarioCom2" name="inventarioCom">
+          <input class="caixinha" type="checkbox" id="inventarioCom3" name="inventarioCom">
+        </div>
+        <div class="subsessao" id="inventario">
+          <span class="texticulo">Incomum</span><br/>
+          <input class="caixinha" type="checkbox" id="inventarioInc1" name="inventarioInc">
+          <input class="caixinha" type="checkbox" id="inventarioInc2" name="inventarioInc">
+        </div>
+        <div class="subsessao" id="inventario">
+          <span class="texticulo">Raro</span><br/>
+          <input class="caixinha" type="checkbox" id="inventarioRar1" name="inventarioRar">
+        </div>
+
+      </div>
+      <div class="colDireita">
+
+        <div class="blocoLinear">
+          <span class="titulo">Vantagens</span>
+        </div>
+
+        <div class="blocoLinear">
+          <textarea class="descricao" readonly>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</textarea>
+          <button class="botao-editar" onclick="toggleEdicao(this)">Editar</button>
+        </div>
+        <div class="blocoLinear">
+          <textarea class="descricao" readonly>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</textarea>
+          <button class="botao-editar" onclick="toggleEdicao(this)">Editar</button>
+        </div>
+        <div class="blocoLinear">
+          <textarea class="descricao" readonly>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</textarea>
+          <button class="botao-editar" onclick="toggleEdicao(this)">Editar</button>
+        </div>
+        <div class="blocoLinear">
+          <textarea class="descricao" readonly>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</textarea>
+          <button class="botao-editar" onclick="toggleEdicao(this)">Editar</button>
+        </div>
+        <div class="blocoLinear">
+          <textarea class="descricao" readonly>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</textarea>
+          <button class="botao-editar" onclick="toggleEdicao(this)">Editar</button>
+        </div>
+        <div class="blocoLinear">
+          <textarea class="descricao" readonly>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</textarea>
+          <button class="botao-editar" onclick="toggleEdicao(this)">Editar</button>
+        </div>
+        <div class="blocoLinear">
+          <textarea class="descricao" readonly>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</textarea>
+          <button class="botao-editar" onclick="toggleEdicao(this)">Editar</button>
+        </div>
+        <div class="blocoLinear">
+          <textarea class="descricao" readonly>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</textarea>
+          <button class="botao-editar" onclick="toggleEdicao(this)">Editar</button>
+        </div>
+        <div class="blocoLinear">
+          <textarea class="descricao" readonly>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</textarea>
+          <button class="botao-editar" onclick="toggleEdicao(this)">Editar</button>
+        </div>
+        <div class="blocoLinear">
+          <textarea class="descricao" readonly>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</textarea>
+          <button class="botao-editar" onclick="toggleEdicao(this)">Editar</button>
+        </div>
+
+        <div class="blocoLinear">
+          <span class="titulo">Devantagens</span>
+        </div>
+
+        <div class="blocoLinear">
+          <textarea class="descricao" readonly>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</textarea>
+          <button class="botao-editar" onclick="toggleEdicao(this)">Editar</button>
+        </div>
+        <div class="blocoLinear">
+          <textarea class="descricao" readonly>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</textarea>
+          <button class="botao-editar" onclick="toggleEdicao(this)">Editar</button>
+        </div>
+        <div class="blocoLinear">
+          <textarea class="descricao" readonly>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</textarea>
+          <button class="botao-editar" onclick="toggleEdicao(this)">Editar</button>
+        </div>
+        <div class="blocoLinear">
+          <textarea class="descricao" readonly>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</textarea>
+          <button class="botao-editar" onclick="toggleEdicao(this)">Editar</button>
+        </div>
+        <div class="blocoLinear">
+          <textarea class="descricao" readonly>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</textarea>
+          <button class="botao-editar" onclick="toggleEdicao(this)">Editar</button>
+        </div>
+
+        <div class="blocoLinear">
+          <span class="titulo">Técnicas</span>
+        </div>
+
+        <div class="blocoLinear">
+          <textarea class="descricao" readonly>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</textarea>
+          <button class="botao-editar" onclick="toggleEdicao(this)">Editar</button>
+        </div>
+        <div class="blocoLinear">
+          <textarea class="descricao" readonly>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</textarea>
+          <button class="botao-editar" onclick="toggleEdicao(this)">Editar</button>
+        </div>
+        <div class="blocoLinear">
+          <textarea class="descricao" readonly>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</textarea>
+          <button class="botao-editar" onclick="toggleEdicao(this)">Editar</button>
+        </div>
+        <div class="blocoLinear">
+          <textarea class="descricao" readonly>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</textarea>
+          <button class="botao-editar" onclick="toggleEdicao(this)">Editar</button>
+        </div>
+        <div class="blocoLinear">
+          <textarea class="descricao" readonly>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</textarea>
+          <button class="botao-editar" onclick="toggleEdicao(this)">Editar</button>
+        </div>        
+      </div>
+
+    </section>
+
   </div>
 
-  <div id="result"></div>
-
-  <h2>Atributos</h2>
-
-  <div class="bloco" id="atributos">
-    <label class="caracteristica" for="poder">Poder</label>
-    <input class="campoCurto" type="number" id="poder" value="0">
-    <input class="campoCurto" type="number" id="poderCritico" value="6" min="1" max="6">
-    <button onclick="rollDice('poder')">Testar (P)</button>
-  </div>
-
-  <div class="bloco" id="atributos">
-    <label class="caracteristica" for="habilidade">Habilidade</label>
-    <input class="campoCurto" type="number" id="habilidade" value="0">
-    <input class="campoCurto" type="number" id="habilidadeCritico" value="6" min="1" max="6">
-    <button onclick="rollDice('habilidade')">Testar (H)</button>
-  </div>
-
-  <div class="bloco" id="atributos">
-    <label class="caracteristica" for="resistance">Resistência</label>
-    <input class="campoCurto" type="number" id="resistance" value="0">
-    <input class="campoCurto" type="number" id="resistanceCritico" value="6" min="1" max="6">
-    <button onclick="rollDice('resistance')">Testar (R)</button>
-  </div>
-
-  <h2>Recursos</h2>
-
-  <div class="bloco" id="recursos">
-    <label class="caracteristica" for="action">Pontos de Ação:</label>
-    <span id="paTotal">0</span>
-    <input class="campoCurto" type="number" id="paAtual" value="0">
-    <button onclick="debitarRecurso('paAtual')">Reduzir (PA)</button>
-  </div>
-
-  <div class="bloco" id="recursos">
-    <label class="caracteristica" for="mana">Pontos de Mana:</label>
-    <span id="pmTotal">0</span>
-    <input class="campoCurto" type="number" id="pmAtual" value="0">
-    <button onclick="debitarRecurso('pmAtual')">Reduzir (PM)</button>
-  </div>
-
-  <div class="bloco" id="recursos">
-    <label class="caracteristica" for="life">Pontos de Vida:</label>
-    <span id="pvTotal">0</span>
-    <input class="campoCurto" type="number" id="pvAtual" value="0">
-    <button onclick="debitarRecurso('pvAtual')">Reduzir (PV)</button>
-  </div>
-
-  <button onclick="descansoCurto()">Descanso Curto</button>
-  <button onclick="descansoLongo()">Descanso Longo</button>
-
-  <h2>Perícias</h2>
-
-  <div class="bloco" id="pericias">
-    <table class="bloco" id="pericias">
-      <tr>
-        <td><label class="textoPequeno"><input type="checkbox" name="pericia" value="Animais">Animais</label></td>
-        <td><label class="textoPequeno"><input type="checkbox" name="pericia" value="Arte">Arte</label></td>
-        <td><label class="textoPequeno"><input type="checkbox" name="pericia" value="Esporte">Esporte</label></td>
-        <td><label class="textoPequeno"><input type="checkbox" name="pericia" value="Influência">Influência</label></td>
-      </tr>
-      <tr>
-        <td><label class="textoPequeno"><input type="checkbox" name="pericia" value="Luta">Luta</label></td>
-        <td><label class="textoPequeno"><input type="checkbox" name="pericia" value="Manha">Manha</label></td>
-        <td><label class="textoPequeno"><input type="checkbox" name="pericia" value="Máquinas">Máquinas</label></td>
-        <td><label class="textoPequeno"><input type="checkbox" name="pericia" value="Medicina">Medicina</label></td>
-      </tr>
-      <tr>
-        <td><label class="textoPequeno"><input type="checkbox" name="pericia" value="Mística">Mística</label></td>
-        <td><label class="textoPequeno"><input type="checkbox" name="pericia" value="Percepção">Percepção</label></td>
-        <td><label class="textoPequeno"><input type="checkbox" name="pericia" value="Saber">Saber</label></td>
-        <td><label class="textoPequeno"><input type="checkbox" name="pericia" value="Sustento">Sustento</label></td>
-      </tr>
-    </table>
-  </div>
-
-</div>
-<div class="containerDireito">
-
-  <label class="caracteristica" for="nome">Nome</label>
-  <input class="campoMedio" type="text" id="nome" name="nome"><br>
-
-  <label class="caracteristica" for="nome">Arquétipo</label>
-  <input class="campoMedio" type="text" id="arquetipo" name="arquetipo">
-  
-  <div id="nivel" class="bloco">
-    <label class="caracteristica" for="xp">XP</label>
-    <input class="caixaPequena" type="checkbox" id="xp1" name="xp" value="1">
-    <input class="caixaPequena" type="checkbox" id="xp2" name="xp" value="2">
-    <input class="caixaPequena" type="checkbox" id="xp3" name="xp" value="3">
-    <input class="caixaPequena" type="checkbox" id="xp4" name="xp" value="4">
-    <input class="caixaPequena" type="checkbox" id="xp5" name="xp" value="5">
-    <input class="caixaPequena" type="checkbox" id="xp6" name="xp" value="6">
-    <input class="caixaPequena" type="checkbox" id="xp7" name="xp" value="7">
-    <input class="caixaPequena" type="checkbox" id="xp8" name="xp" value="8">
-    <input class="caixaPequena" type="checkbox" id="xp9" name="xp" value="9">
-    <input class="caixaPequena" type="checkbox" id="xp10" name="xp" value="10">
-    <button onclick="desmarcarTodos('xp')">UPAR!</button>
-
-    <label class="caracteristica" for="xp">Pontos</label>
-    <input class="campoCurto" type="number" id="xpValor" value="10">
-  </div>
-
-  <h2>Vantagens</h2>
-  <div id="vantagens" class="bloco">
-    <input class="campoLongo" type="text" id="vantagem1" name="vantagem">
-    <input class="campoLongo" type="text" id="vantagem2" name="vantagem">
-    <input class="campoLongo" type="text" id="vantagem3" name="vantagem">
-    <input class="campoLongo" type="text" id="vantagem4" name="vantagem">
-    <input class="campoLongo" type="text" id="vantagem5" name="vantagem">
-    <input class="campoLongo" type="text" id="vantagem6" name="vantagem">
-    <input class="campoLongo" type="text" id="vantagem7" name="vantagem">
-    <input class="campoLongo" type="text" id="vantagem8" name="vantagem">
-    <input class="campoLongo" type="text" id="vantagem9" name="vantagem">
-    <input class="campoLongo" type="text" id="vantagem10" name="vantagem">
-  </div>
-
-  <h2>Desvantagens</h2>
-  <div id="desvantagens" class="bloco">
-    <input class="campoLongo" type="text" id="desvantagem1" name="desvantagem">
-    <input class="campoLongo" type="text" id="desvantagem2" name="desvantagem">
-    <input class="campoLongo" type="text" id="desvantagem3" name="desvantagem">
-    <input class="campoLongo" type="text" id="desvantagem4" name="desvantagem">
-  </div>
-
-  <h2>Técnicas</h2>
-  <div id="tecnicas" class="bloco">
-    <input class="campoLongo" type="text" id="tecnica1" name="tecnica">
-    <input class="campoLongo" type="text" id="tecnica2" name="tecnica">
-    <input class="campoLongo" type="text" id="tecnica3" name="tecnica">
-    <input class="campoLongo" type="text" id="tecnica4" name="tecnica">
-    <input class="campoLongo" type="text" id="tecnica5" name="tecnica">
-    <input class="campoLongo" type="text" id="tecnica6" name="tecnica">
-  </div>
-  
-</div>
-
-</div>
-
-    <script>
-      // Função para rolar os dados
-      function rollDice(field) {
-        var numberOfDice = parseInt(document.querySelector('input[name="dados"]:checked').value);
-        var bonus = parseInt(document.getElementById(field).value);
-        var critico = parseInt(document.getElementById(field + "Critico").value);
-        var total = 0;
-        var rolls = [];
-
-        for (var i = 0; i < numberOfDice; i++) {
-          var roll = Math.floor(Math.random() * 6) + 1;
-          rolls.push(roll);
-          if (roll >= critico) {
-            total += roll + bonus;
-          } else {
-            total += roll;
-          }
+  <script>
+    // Função para rolar os dados
+    function rollDice(field) {
+      var numberOfDice = parseInt(document.querySelector('input[name="dados"]:checked').value);
+      var bonus = parseInt(document.getElementById(field).value);
+      var critico = parseInt(document.getElementById(field + "Critico").value);
+      var total = 0;
+      var rolls = [];
+      for (var i = 0; i < numberOfDice; i++) {
+        var roll = Math.floor(Math.random() * 6) + 1;
+        rolls.push(roll);
+        if (roll >= critico) {
+          total += roll + bonus;
+        } else {
+          total += roll;
         }
-
-        var rollsText = rolls.join(', ');
-        var result = "Rolagens: " + rollsText;
-        result += " com Críticos: " + total;
-
-        document.getElementById("result").innerHTML = result;
       }
-
-      // Função para debitar recursos
-      function debitarRecurso(field) {
-        var valor = prompt("Digite o valor a ser debitado:");
-        if (valor !== null) {
-          var input = document.getElementById(field);
-          var newValue = parseInt(input.value) - parseInt(valor);
-          if (newValue < 0) {
-            alert("O valor não pode ser menor que zero!");
-          } else {
-            input.value = newValue;
-            updateLabels();
-          }
+      var rollsText = rolls.join(', ');
+      var result = "Valores: " + rollsText;
+      result += "<br>Soma c/ Críticos: " + total;
+      document.getElementById("result").innerHTML = result;
+    }
+  
+    // Função para Debitar Recursos
+    function debitarRecurso(field) {
+      var valor = prompt("Digite o valor a ser debitado:");
+      if (valor !== null) {
+        var input = document.getElementById(field);
+        var newValue = parseInt(input.value) - parseInt(valor);
+        if (newValue < 0) {
+          alert("O valor não pode ser menor que zero!");
+        } else {
+          input.value = newValue;
+          updateLabels();
         }
       }
-
-      // Função para descanso curto
-      function descansoCurto() {
-        var pmInput = document.getElementById("pmAtual");
-        var pvInput = document.getElementById("pvAtual");
-        var habilidadeValue = parseInt(document.getElementById("habilidade").value);
-        var resistanceValue = parseInt(document.getElementById("resistance").value);
-        var maxhabilidade = parseInt(document.getElementById("habilidade").value) * 5;
-        var maxResistance = parseInt(document.getElementById("resistance").value) * 5;
-        var currentPm = parseInt(pmInput.value);
-        var currentPv = parseInt(pvInput.value);
-        var updatedPm = currentPm + habilidadeValue;
-        var updatedPv = currentPv + resistanceValue;
-        pmInput.value = updatedPm <= maxhabilidade ? updatedPm : maxhabilidade;
-        pvInput.value = updatedPv <= maxResistance ? updatedPv : maxResistance;
-        updateLabels();
-      }
-
-      // Função para descanso longo
-      function descansoLongo() {
-        var poderValue = parseInt(document.getElementById("poder").value);
-        var habilidadeValue = parseInt(document.getElementById("habilidade").value);
-        var resistanceValue = parseInt(document.getElementById("resistance").value);
-        var macaixaPequenaoder = parseInt(document.getElementById("poder").value);
-        var maxhabilidade = parseInt(document.getElementById("habilidade").value) * 5;
-        var maxResistance = parseInt(document.getElementById("resistance").value) * 5;
-        document.getElementById("paAtual").value = macaixaPequenaoder;
-        document.getElementById("pmAtual").value = maxhabilidade;
-        document.getElementById("pvAtual").value = maxResistance;
-        updateLabels();
-      }
-
-      // Selecionando os elementos de input
-      const poderInput = document.getElementById("poder");
-      const habilidadeInput = document.getElementById("habilidade");
-      const resistanceInput = document.getElementById("resistance");
-
-      // Selecionando os elementos de rótulo
-      const paTotalLabel = document.getElementById("paTotal");
-      const paAtualLabel = document.getElementById("paAtual");
-      const pmTotalLabel = document.getElementById("pmTotal");
-      const pmAtualLabel = document.getElementById("pmAtual");
-      const pvTotalLabel = document.getElementById("pvTotal");
-      const pvAtualLabel = document.getElementById("pvAtual");
-
-      // Função para atualizar os rótulos
-      function updateLabels() {
-        // Atualizando rótulos de Pontos de Ação
-        paTotalLabel.textContent = poderInput.value;
-        paAtualLabel.textContent = document.getElementById("paAtual").value;
-
-        // Atualizando rótulos de Pontos de Mana
-        pmTotalLabel.textContent = habilidadeInput.value * 5;
-        pmAtualLabel.textContent = document.getElementById("pmAtual").value;
-
-        // Atualizando rótulos de Pontos de Vida
-        pvTotalLabel.textContent = resistanceInput.value * 5;
-        pvAtualLabel.textContent = document.getElementById("pvAtual").value;
-      }
-
-      // Chamando a função inicialmente para configurar os rótulos corretamente
+    }
+  
+    // Função para Descanso Curto
+    function descansoCurto() {
+      var pmInput = document.getElementById("pmAtual");
+      var pvInput = document.getElementById("pvAtual");
+      var habilidadeValue = parseInt(document.getElementById("habilidade").value);
+      var resistanceValue = parseInt(document.getElementById("resistance").value);
+      var maxhabilidade = parseInt(document.getElementById("habilidade").value) * 5;
+      var maxResistance = parseInt(document.getElementById("resistance").value) * 5;
+      var currentPm = parseInt(pmInput.value);
+      var currentPv = parseInt(pvInput.value);
+      var updatedPm = currentPm + habilidadeValue;
+      var updatedPv = currentPv + resistanceValue;
+      pmInput.value = updatedPm <= maxhabilidade ? updatedPm : maxhabilidade;
+      pvInput.value = updatedPv <= maxResistance ? updatedPv : maxResistance;
       updateLabels();
-
-      // Adicionando event listeners para detectar alterações nos numeros numéricos
-      poderInput.addEventListener("input", updateLabels);
-      habilidadeInput.addEventListener("input", updateLabels);
-      resistanceInput.addEventListener("input", updateLabels);
-
-      function desmarcarTodos(groupName) {
-        var checkboxes = document.getElementsByName(groupName);
-        checkboxes.forEach(function(checkbox) {
-          checkbox.checked = false;
-        });
+    }
+  
+    // Função para Descanso Longo
+    function descansoLongo() {
+      var poderValue = parseInt(document.getElementById("poder").value);
+      var habilidadeValue = parseInt(document.getElementById("habilidade").value);
+      var resistanceValue = parseInt(document.getElementById("resistance").value);
+      var maxhabilidade = parseInt(document.getElementById("habilidade").value) * 5;
+      var maxResistance = parseInt(document.getElementById("resistance").value) * 5;
+      document.getElementById("paAtual").value = poderValue;
+      document.getElementById("pmAtual").value = maxhabilidade;
+      document.getElementById("pvAtual").value = maxResistance;
+      updateLabels();
+    }
+  
+    // Selecionando os elementos de input
+    const poderInput = document.getElementById("poder");
+    const habilidadeInput = document.getElementById("habilidade");
+    const resistanceInput = document.getElementById("resistance");
+    const paExtraInput = document.getElementById("paExtra");
+    const pmExtraInput = document.getElementById("pmExtra");
+    const pvExtraInput = document.getElementById("pvExtra");
+  
+    // Selecionando os elementos de rótulo
+    const paTotalLabel = document.getElementById("paTotal");
+    const paAtualLabel = document.getElementById("paAtual");
+    const pmTotalLabel = document.getElementById("pmTotal");
+    const pmAtualLabel = document.getElementById("pmAtual");
+    const pvTotalLabel = document.getElementById("pvTotal");
+    const pvAtualLabel = document.getElementById("pvAtual");
+  
+    // Função para atualizar os rótulos
+    function updateLabels() {
+      // Atualizando rótulos de Pontos de Ação
+      paTotalLabel.textContent = parseInt(poderInput.value) + parseInt(paExtraInput.value);
+      paAtualLabel.textContent = document.getElementById("paAtual").value;
+      // Atualizando rótulos de Pontos de Mana
+      pmTotalLabel.textContent = parseInt(habilidadeInput.value) * 5 + parseInt(pmExtraInput.value);
+      pmAtualLabel.textContent = document.getElementById("pmAtual").value;
+      // Atualizando rótulos de Pontos de Vida
+      pvTotalLabel.textContent = parseInt(resistanceInput.value) * 5 + parseInt(pvExtraInput.value);
+      pvAtualLabel.textContent = document.getElementById("pvAtual").value;
+    }
+  
+    // Chamando a função inicialmente para configurar os rótulos corretamente
+    updateLabels();
+  
+    // Adicionando event listeners para detectar alterações nos numeros numéricos
+    poderInput.addEventListener("input", updateLabels);
+    habilidadeInput.addEventListener("input", updateLabels);
+    resistanceInput.addEventListener("input", updateLabels);
+    paExtraInput.addEventListener("input", updateLabels);
+    pmExtraInput.addEventListener("input", updateLabels);
+    pvExtraInput.addEventListener("input", updateLabels);
+  
+    // Função Resetar XP
+    function desmarcarTodos(groupName) {
+      var checkboxes = document.getElementsByName(groupName);
+      checkboxes.forEach(function(checkbox) {
+        checkbox.checked = false;
+      });
+    }
+  
+    // Função Editar Características
+  
+    function toggleEdicao(botao) {
+      var descricao = botao.parentElement;
+      var textoDescricao = descricao.querySelector('.descricao');
+      if (textoDescricao.readOnly) {
+        textoDescricao.readOnly = false;
+        textoDescricao.style.backgroundColor = '#eeeeee';
+        textoDescricao.style.height = '100px';
+        botao.textContent = 'Salvar';
+      } else {
+        textoDescricao.readOnly = true;
+        textoDescricao.style.backgroundColor = '#ffffff';
+        textoDescricao.style.height = '16px';
+        botao.textContent = 'Editar';
       }
-    </script>
+    }
+  </script>  
 
-  </body>
+</body>
 </html>
