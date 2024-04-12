@@ -1,2 +1,6 @@
-# rpg_ficha_3det
- Aproveitando os horários de almoço, irei criar uma ficha para o RPG 3DeT, visando futuramente adaptá-la para o Roll20, usando apenas HTML, CSS e JavaScript..
+# Ficha de RPG: 3DeT Victory
+Aproveitando meus horários de almoço nas quartas-feiras, decidi desenvolver uma ficha para o novo sistema de RPG 3DeT Victory, usando apenas: HTML, CSS e JavaScript, visando retomar meus estudos de programação e quem sabe, futuramente adaptando-a para o Roll20.
+v0.1 - Nesta 1ª versão, criei o processamento central da ficha, iniciando já com o rolador de dados, os bônus de atributos e também as bases de críticos.
+v0.2 - Nesta 2ª versão, ajustei um o visual geral, criei o limite numérico do valor base de críticos do bloco de Atributos e por fim, criei um novo bloco chamado recursos. No bloco recursos, os pontos já são calculados automaticamente em conjunto dos atributos, além botões para consumo deles e também botões para recuperá-los, seja com Descanso Curto ou Longo.
+v0.3 - Nesta 3ª versão, adicionei mais elementos próprios da ficha de 3DeT, desde as informações de identidade até as características como Perícias, Vantagens, etc. Além de iniciar o visual de ficha, mas vem de leve.
+v0.4 - Nesta 4ª versão, adicionei o inventário apesar de ainda em modo simples e também separei um local para a foto de avatar do personagem, além de ter adicionado uma funcionalidade que permite bloquear/editar os campos de características. Por fim, mudei quase que completamente a aparência de toda a ficha, tentando puxar para o visual amigável do Victory.
