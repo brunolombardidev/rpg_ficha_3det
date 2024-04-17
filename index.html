@@ -10,94 +10,169 @@
   body {
     margin: 20px;
     padding: 0px;
-    background-color: #000000;
-    color: #000000;
+    background-color: #1f1f1f;
+    color: #000;
     font-family:Arial, Helvetica, sans-serif;
     font-size: 10px;
+  }
+
+  body.darkMode {
+	  background-color: #1f1f1f;
+	  color: #fff;
+  }
+  .darkMode .ficha {
+	  background-color: #000;
+  }
+  .darkMode .fichaRolagens {
+    background-color: #333;
+  }
+  .darkMode .subsessao {
+    background-color: #333;
+  }
+  .darkMode .fichaNotas { 
+    background-color: #333;
+  }
+
+  /* Barra de Rolagem */
+
+  ::-webkit-scrollbar { width: 10px; }
+  ::-webkit-scrollbar-track { background: #333; }
+  ::-webkit-scrollbar-thumb { background: #666; }
+  ::-webkit-scrollbar-thumb:hover { background: #888; }
+  ::-webkit-scrollbar-button { background: #888; }
+
+  /* Links */
+  a {
+    font-weight: bold;
+  }
+  a.linkExterno:link, :visited {
+    color: #aaa;
+    text-decoration-line: none;
+    text-align: center;
+  }
+  a.linkExterno:hover {
+    color: #00A3FF;
+    text-decoration: underline;
   }
 
   /* Imagens e Icones */
 
   img.logotipo {
-    margin: 0px 10px;
-    width: 160px;
+    margin-right: 10px;
+    padding: 0px;
+    width: 165px;
   }
 
   img.avatar {
-    margin: 0px 10px;
+    margin-right: 0px;
     padding: 0px;
-    width: 75px;
-    border: 2px solid #eee;
+    max-width: 80px;
+    height: 95px;
     border-radius: 5px;
-    object-fit: cover;
+    border: 2px solid #eee;
     object-position: center;
+    object-fit: cover;
   }
 
-  img.icone {
-    margin: 0px 5px 0px 8px;
+  img.iconePqn {
+    margin-right: 5px;
     padding-left: 0px;
-    height: 15px;
+    height: 12px;
     vertical-align: middle;
   }
 
-  img.dseis {
-    margin: 0px 3px 0px 10px;
+  img.iconeGrd {
+    margin: 0px;
     padding: 0px;
-    height: 15px;
+    height: 16px;
     vertical-align: middle;
   }
+
+  img.iconeTema {
+    margin: 0px;
+    padding: 5px 2px;
+    height: 15px;
+    vertical-align: middle;
+    align-items: center;
+  }
+
 
   /* Estrutura da Pagina */
 
   .ficha {
     margin: 0 auto;
-    padding: 15px 10px;
-    width: 750px;
+    padding: 10px 20px 25px 20px;
+    width: 720px;
     background-color: #fff;
     border-radius: 15px;
   }
 
   .colEsquerda {
     flex: 1;
-    margin: 0px;
-    padding: 0px 10px;
-    max-width: 280px;
+    margin: 5px 10px 0px 0px;
+    padding: 0px;
+    max-width: 260px;
   }
 
   .colDireita {
     flex: 1;
-    margin: 0px;
-    padding: 0px 10px;
+    margin: 5px 0px 0px 10px;
+    padding: 0px;
     max-width: 450px;
   }
 
   .blocoLinear {
-    margin: 0px;
+    margin: 2px 0px;
     padding: 0px;
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
     vertical-align: middle;
     align-items: center;
   }
 
   .fichaRolagens {
-    margin: 5px 0px 0px 0px;
-    padding: 10px;
-    width: 96%;
+    margin-top: 10px;
+    padding: 10px 20px;
+    width: 95%;
     height: 40px;
+    background-color: #eee;
     border-radius: 5px;
-    background-color: #eeeeee;
     display: flex;
     align-items:center;
   }
 
-  .subsessao {
-    margin: 10px 3px 0px 0px;
-    padding: 10px 15px;
+  .fichaNotas {
+    margin-top: 10px;
+    padding: 10px;
+    width: 98%;
+    background-color: #eee;
     border-radius: 5px;
+  }
+
+  .fichaDev {
+    margin: 0px 0px 10px 0px;
+    text-align: center;
+  }
+
+  .subsessao {
+    margin-top: 10px;
+    margin-right: 2px;
+    padding: 8px 20px;
     background: #eee;
+    border-radius: 5px;
     display: inline-block;
     text-align: center;
+  }
+
+  .itemAtributo {
+    padding: 10px 0px 5px 0px;
+    height: 20px;
+    width: 145px;
+    display: flex;
+    justify-content: center;
+    align-items: last baseline;
+    position: relative;
   }
 
   .itemPericia {
@@ -117,21 +192,28 @@
   }
 
   .subtitulo {
-    margin: 0px 10px;
+    margin: 15px 20px 15px 5px;
     padding: 0px;
     width: 25px;
     font-size: 14px;
+    color: #000;
     font-weight: bold;
+    vertical-align: middle;
   }
 
   .texticulo {
     margin: 2px;
     padding: 0px;
+    color: #888;
     cursor: pointer;
   }
 
+  .desenvolvedor {
+    color: #888
+  }
+
   #result {
-    margin: 10px;
+    margin: 5px;
     font-size: 14px;
     font-weight: bold;
     color: #00A3FF;
@@ -139,21 +221,24 @@
 
   .recursoTotal {
     margin: 0px 2px;
-    padding: 4px;
-    border: 1px solid #ddd;
+    padding: 3px;
+    min-width: 35px;
+    height: 18px;
     border-radius: 3px;
-    width: 32px;
+    border: 1px solid #ddd;
     background-color: #eee;
+    color: #000;
     font-size: 12px;
     font-weight: bold;
+    text-align: center;
   }
 
   /* Objetos Personalizados */
 
   .rotulo {
-    margin: 0px;
-    padding: 0px;
-    min-width: 110px;
+    margin-right: 4px;
+    padding-left: 8px;
+    min-width: 114px;
     min-height: 25px;
     border: 0px;
     border-radius: 15px;
@@ -165,50 +250,68 @@
     display: inline-block;
     cursor: pointer;
   }
-
   .botaoDados {
     background-color: #00A3FF;
   }
-
   .podAcao {
-    background-color: orange;
+    background-color: #f09543;
   }
-
   .habMana {
-    background-color: purple;
+    background-color: #c136ae ;
   }
-
   .resVida {
-    background-color: green;
+    background-color: #45a73c;
   }
 
   /* Botão e Campos */
 
   button {
-    margin: 1px;
-    padding: 3px;
-    background-color: #ddd;
-    border: 1px solid #ccc;
+    margin: 2px;
+    padding: 2px 4px;
+    height: 26px;
+    border: 0px;
     border-radius: 3px;
-    height: 24px;
+    color: #fff;
     font-size: 12px;
-    color: #999;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  button.normal {
+    background-color: #ddd;
+  }
+  button.destaque {
+    background-color: #00A3FF;
+  }
+  button.tema {
+    border: none;
+    border-radius: 50%;
+    background-color: #666;
     cursor: pointer;
   }
 
   input.campo {
     margin: 2px;
-    padding: 0px 5px;
-    height: 22px;
-    border: 1px solid #ddd;
+    padding: 0px 2px 0px 8px;
+    height: 26px;
     border-radius: 3px;
+    border: 1px solid #eee;
     font-size: 12px;
   }
-  .completo { min-width: 96%; }
-  .medio { width: 46%; }
-  .curto {
+  input.completo {
+    min-width: 96%;
+  }
+  input.medio {
+    width: 46%;
+  }
+  input.curto {
     width: 30px;
-    text-align: center;
+    text-align: right;
+  }
+  input.destaque {
+    font-weight: bold;
+  }
+  input.comum {
+    color:#aaa
   }
 
   ::placeholder {
@@ -217,7 +320,7 @@
   }
 
   input.formas {
-    margin: 5px 2px;
+    margin: 6px 2px;
     padding: 0px;
     vertical-align: middle;
     cursor: pointer;
@@ -226,51 +329,104 @@
   textarea {
     margin: 2px;
     padding: 4px;
-    width: 100%;
-    height: 15px;
-    border: 1px solid #ddd;
+    width: 96%;
     border-radius: 3px;
+    border: 1px solid #eee;
     background-color: #fff;
     font-size: 12px;
     line-height: 20px;
-    cursor: default;
+  }
+
+  .trava {
+    height: 18px;
+    background-color: #eee;
     resize: none;
+    cursor: default;
     overflow: hidden;
     transition: height 0.3s ease;
   }
 
+/* JANELA MODAL */
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  border-radius: 10px;
+  padding: 20px;
+  width: 260px;
+  min-height: 130px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+}
+
+.modalTitulo {
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.modalConteudo {
+  width: auto;
+  height: auto;
+  font-size: 14px;
+}
+
 </style>
 <body>
+
+  <section class="fichaDev">
+    <div>
+      <span class="desenvolvedor"><strong><a class="linkExterno" href="https://github.com/brunolombardidev/rpg_ficha_3det" target="_blank" alt="Projeto no GitHub">Ficha V0.5</a></strong> :: Desenvolvida por </span><a class="linkExterno" href="https://www.linkedin.com/in/brunolombardidev/" target="_blank" alt="Perfil do linkedin">
+        <strong>BrunoSLCarvalho</strong></span>
+      </a>
+    </div>
+  </section>
 
   <div class="ficha">
     <section class="fichaTopo blocoLinear">
 
       <div class="colEsquerda blocoLinear">
-        <img class="logotipo" src="src/img/logo-3det-preto.png" />
-        <img class="avatar" src="src/img/avatar-image.jpg" />
+        <img class="logotipo" src="./src/img/logo-3det-preto.png" />
+        <img class="avatar" src="./src/img/avatar-image.jpg" />
       </div>
 
       <div class="colDireita">
 
-        <input class="campo completo" type="text" id="nome" name="nome" placeholder="Nome"><br>
+        <input class="campo completo" type="text" id="nome" name="nome" placeholder="Nome">
         <input class="campo medio" type="text" id="arquetipo" name="arquetipo" placeholder="Arquetipo">
         <input class="campo medio" type="text" id="kits" name="kits" placeholder="Kits">
-        
-        <div id="nivel" class="bloco">
-          <span class="subtitulo">XP</span>
-          <input  class="formas" type="checkbox" id="xp1" name="xp" value="1">
-          <input class="formas" type="checkbox" id="xp2" name="xp" value="2">
-          <input class="formas" type="checkbox" id="xp3" name="xp" value="3">
-          <input class="formas" type="checkbox" id="xp4" name="xp" value="4">
-          <input class="formas" type="checkbox" id="xp5" name="xp" value="5">
-          <input class="formas" type="checkbox" id="xp6" name="xp" value="6">
-          <input class="formas" type="checkbox" id="xp7" name="xp" value="7">
-          <input class="formas" type="checkbox" id="xp8" name="xp" value="8">
-          <input class="formas" type="checkbox" id="xp9" name="xp" value="9">
-          <input class="formas" type="checkbox" id="xp10" name="xp" value="10">
-          <button onclick="desmarcarTodos('xp')">UPAR!</button>
-          <span class="subtitulo">Pontos</span>
-          <input class="campo curto" type="number" id="xpValor" value="10">
+
+        <div class="blocoLinear">
+          <span class="titulo">XPs</span>
+          <input class="formas checkbox" type="checkbox" id="checkbox1" onclick="checkLevels(1)">
+          <input class="formas checkbox" type="checkbox" id="checkbox2" onclick="checkLevels(2)">
+          <input class="formas checkbox" type="checkbox" id="checkbox3" onclick="checkLevels(3)">
+          <input class="formas checkbox" type="checkbox" id="checkbox4" onclick="checkLevels(4)">
+          <input class="formas checkbox" type="checkbox" id="checkbox5" onclick="checkLevels(5)">
+          <input class="formas checkbox" type="checkbox" id="checkbox6" onclick="checkLevels(6)">
+          <input class="formas checkbox" type="checkbox" id="checkbox7" onclick="checkLevels(7)">
+          <input class="formas checkbox" type="checkbox" id="checkbox8" onclick="checkLevels(8)">
+          <input class="formas checkbox" type="checkbox" id="checkbox9" onclick="checkLevels(9)">
+          <input class="formas checkbox" type="checkbox" id="checkbox10" onclick="checkLevels(10)">
+          <button class="normal" onclick="levelUp()">UPAR!</button>
+          <input class="campo curto" type="number" id="levelInput" value="10" readonly>
+          <span class="titulo">Pontos</span>
+          <button class="tema" id="claroEscuro">
+            <img class="iconeTema" src="./src/img/botao-moon.png" alt="claroEscuro" />
+          </button>
         </div>
 
       </div>
@@ -279,12 +435,9 @@
     <section class="fichaRolagens">
 
       <div id="rolagem">
-        <img class="dseis" src="./src/img/icone-dado3.png" />
-        <span class="subtitulo">Rolador</span>
-        <label>
-          <input class="caixinha" type="checkbox" name="dharma" value="ganho">
-          <span class="texticulo">Dharma</span>
-        </label>
+        <img class="iconeGrd" src="./src/img/icone-dado3.png" />
+        <span class="subtitulo">Dados</span>
+
         <label class="rotulo botaoDados">
           <input class="formas" type="radio" name="dados" value="1" checked>Normal (1D)
         </label>
@@ -294,83 +447,102 @@
         <label class="rotulo botaoDados">
           <input class="formas" type="radio" name="dados" value="3">+Ganho (3D)
         </label>
+        <div class="itemPericia">
+          <label>
+            <input class="formas" type="checkbox" name="kharma" value="Kharma">
+            <span class="texticulo">Kharma</span>
+          </label>
+        </div>
       </div>
-      <div id="result"></div>
+      <!--<div id="result"></div>-->
 
     </section>
     <section class="fichaBase blocoLinear">
 
       <div class="colEsquerda">
-    
+
         <div class="blocoLinear">
           <span class="titulo">Atributos</span>
-          <span class="texticulo">Pontos | Crítico | Temp</span>
+          <div class=" itemAtributo">
+            <span class="texticulo">Pontos</span>
+            <span class="texticulo"> | </span>
+            <span class="texticulo">Crítico</span>
+            <span class="texticulo"> | </span>
+            <span class="texticulo">Temp</span>
+          </div>
         </div>
 
         <div class="blocoLinear" id="blocoAtributos">
           <button class="rotulo podAcao" onclick="rollDice('poder')">
-            <img class="icone" src="./src/img/icone-atr-poder.png"/>Poder
+            <img class="iconePqn" src="./src/img/icone-atr-poder.png"/>Poder
           </button>
-          <input class="campo curto" type="number" id="poder" value="0">
+          <input class="campo curto destaque" type="number" id="poder" value="0">
           <input class="campo curto" type="number" id="poderCritico" value="6" min="1" max="6">
-          <input class="campo curto" type="number" id="poderTemp" value="0">
+          <input class="campo curto comum" type="number" id="poderTemp" value="0">
         </div>
     
         <div class="blocoLinear" id="blocoAtributos">
           <button class="rotulo habMana" onclick="rollDice('habilidade')">
-            <img class="icone" src="./src/img/icone-atr-habilidade.png"/>Habilidade
+            <img class="iconePqn" src="./src/img/icone-atr-habilidade.png"/>Habilidade
           </button>
-          <input class="campo curto" type="number" id="habilidade" value="0">
+          <input class="campo curto destaque" type="number" id="habilidade" value="0">
           <input class="campo curto" type="number" id="habilidadeCritico" value="6" min="1" max="6">
-          <input class="campo curto" type="number" id="habilidadeTemp" value="0">
+          <input class="campo curto comum" type="number" id="habilidadeTemp" value="0">
         </div>
     
         <div class="blocoLinear" id="blocoAtributos">
           <button class="rotulo resVida" onclick="rollDice('resistance')">
-            <img class="icone" src="./src/img/icone-atr-resistencia.png"/>Resistência
+            <img class="iconePqn" src="./src/img/icone-atr-resistencia.png"/>Resistência
           </button>
-          <input class="campo curto" type="number" id="resistance" value="0">
+          <input class="campo curto destaque" type="number" id="resistance" value="0">
           <input class="campo curto" type="number" id="resistanceCritico" value="6" min="1" max="6">
-          <input class="campo curto" type="number" id="resistanceTemp" value="0">
+          <input class="campo curto comum" type="number" id="resistanceTemp" value="0">
         </div>
     
         <div class="blocoLinear">
           <span class="titulo">Recursos</span>
-          <span class="texticulo">Totais | Atuais | Extra</span>
+          <div class=" itemAtributo">
+            <span class="texticulo">Totais</span>
+            <span class="texticulo"> | </span>
+            <span class="texticulo">Atuais</span>
+            <span class="texticulo"> | </span>
+            <span class="texticulo">Extras</span>
+          </div>
         </div>
     
         <div class="blocoLinear" id="blocoRecursos">
           <button class="rotulo podAcao" for="action" onclick="debitarRecurso('paAtual')">
-            <img class="icone" src="./src/img/icone-rec-acao.png"/>Pts de Ação
+            <img class="iconePqn" src="./src/img/icone-rec-acao.png"/>Pts de Ação
           </button>
           <span class="recursoTotal" id="paTotal">0</span>
           <input class="campo curto" type="number" id="paAtual" value="0">
-          <input class="campo curto" type="number" id="paExtra" value="0">
+          <input class="campo curto comum" type="number" id="paExtra" value="0">
         </div>
     
         <div class="blocoLinear" id="blocoRecursos">
           <button class="rotulo habMana" for="mana" onclick="debitarRecurso('pmAtual')">
-            <img class="icone" src="./src/img/icone-rec-mana.png"/>Pts de Mana
+            <img class="iconePqn" src="./src/img/icone-rec-mana.png"/>Pts de Mana
           </button>
           <span class="recursoTotal" id="pmTotal">0</span>
           <input class="campo curto" type="number" id="pmAtual" value="0">
-          <input class="campo curto" type="number" id="pmExtra" value="0">
+          <input class="campo curto comum" type="number" id="pmExtra" value="0">
         </div>
     
         <div class="blocoLinear" id="blocoRecursos">
           <button class="rotulo resVida" for="life" onclick="debitarRecurso('pvAtual')">
-            <img class="icone" src="./src/img/icone-rec-vida.png"/>Pts de Vida
+            <img class="iconePqn" src="./src/img/icone-rec-vida.png"/>Pts de Vida
           </button>
           <span class="recursoTotal" id="pvTotal">0</span>
           <input class="campo curto" type="number" id="pvAtual" value="0">
-          <input class="campo curto" type="number" id="pvExtra" value="0">
+          <input class="campo curto comum" type="number" id="pvExtra" value="0">
         </div>
 
         <div class="subsessao" id="descansos">
+          <img class="iconeGrd" src="./src/img/icone-rec-descanso.png"/>
           <span class="subtitulo">Descansos</span>
-          <button onclick="descansoCurto()">Curto</button>
-          <button onclick="descansoLongo()">Longo</button>
-          <img class="icone" src="./src/img/icone-rec-descanso.png"/>
+          <button class="botao destaque" onclick="descansoCurto()">Curto</button>
+          <button class="botao destaque" onclick="descansoLongo()">Longo</button>
+          
         </div>
 
         <div class="blocoLinear">
@@ -459,27 +631,39 @@
         </div>
 
         <div id="inventario">
-          <input class="campo completo" type="text" id="inventario1" name="inventario">
-          <input class="campo completo" type="text" id="inventario2" name="inventario">
-          <input class="campo completo" type="text" id="inventario3" name="inventario">
-          <input class="campo completo" type="text" id="inventario4" name="inventario">
-          <input class="campo completo" type="text" id="inventario5" name="inventario">
-          <input class="campo completo" type="text" id="inventario6" name="inventario">
+        <div class="blocoLinear">
+            <input class="campo completo" type="text" id="inventario1" name="inventario" placeholder="Descreva seus itens e marque seu tipo.">
+          </div>
+          <div class="blocoLinear">
+            <input class="campo completo" type="text" id="inventario2" name="inventario" placeholder="Descreva seus itens e marque seu tipo.">
+          </div>
+          <div class="blocoLinear">
+            <input class="campo completo" type="text" id="inventario3" name="inventario" placeholder="Descreva seus itens e marque seu tipo.">
+          </div>
+          <div class="blocoLinear">
+            <input class="campo completo" type="text" id="inventario4" name="inventario" placeholder="Descreva seus itens e marque seu tipo.">
+          </div>
+          <div class="blocoLinear">
+            <input class="campo completo" type="text" id="inventario5" name="inventario" placeholder="Descreva seus itens e marque seu tipo.">
+          </div>
+          <div class="blocoLinear">
+            <input class="campo completo" type="text" id="inventario6" name="inventario" placeholder="Descreva seus itens e marque seu tipo.">
+          </div>
         </div>
         <div class="subsessao" id="inventario">
           <span class="texticulo">Comum</span><br/>
-          <input class="caixinha" type="checkbox" id="inventarioCom1" name="inventarioCom">
-          <input class="caixinha" type="checkbox" id="inventarioCom2" name="inventarioCom">
-          <input class="caixinha" type="checkbox" id="inventarioCom3" name="inventarioCom">
+          <input class="formas" type="checkbox" id="inventarioCom1" name="inventarioCom">
+          <input class="formas" type="checkbox" id="inventarioCom2" name="inventarioCom">
+          <input class="formas" type="checkbox" id="inventarioCom3" name="inventarioCom">
         </div>
         <div class="subsessao" id="inventario">
           <span class="texticulo">Incomum</span><br/>
-          <input class="caixinha" type="checkbox" id="inventarioInc1" name="inventarioInc">
-          <input class="caixinha" type="checkbox" id="inventarioInc2" name="inventarioInc">
+          <input class="formas" type="checkbox" id="inventarioInc1" name="inventarioInc">
+          <input class="formas" type="checkbox" id="inventarioInc2" name="inventarioInc">
         </div>
         <div class="subsessao" id="inventario">
           <span class="texticulo">Raro</span><br/>
-          <input class="caixinha" type="checkbox" id="inventarioRar1" name="inventarioRar">
+          <input class="formas" type="checkbox" id="inventarioRar1" name="inventarioRar">
         </div>
 
       </div>
@@ -487,150 +671,279 @@
 
         <div class="blocoLinear">
           <span class="titulo">Vantagens</span>
+          <div class=" itemAtributo">
+            <span class="texticulo">Descritivo</span><span class="texticulo"> | </span>
+            <span class="texticulo">PM</span>&emsp;&emsp;&emsp;
+          </div>
         </div>
 
         <div class="blocoLinear">
-          <textarea class="descricao" readonly>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</textarea>
-          <button class="botao-editar" onclick="toggleEdicao(this)">Editar</button>
+          <button class="normal" onclick="toggleEdicao(this)">Editar</button>
+          <textarea class="trava" id="vantagem1" placeholder="Espaço para Vantagens." readonly></textarea>
+          <input type="number" class="campo curto trava" id="pmGasto1" placeholder="0" readonly>
+          <button class="destaque publicar" id="Vantagem">Chat</button>
         </div>
         <div class="blocoLinear">
-          <textarea class="descricao" readonly>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</textarea>
-          <button class="botao-editar" onclick="toggleEdicao(this)">Editar</button>
+          <button class="normal" onclick="toggleEdicao(this)">Editar</button>
+          <textarea class="trava" id="vantagem2" placeholder="Espaço para Vantagens." readonly></textarea>
+          <input type="number" class="campo curto trava" id="pmGasto2" placeholder="0" readonly>
+          <button class="destaque publicar" id="Vantagem">Chat</button>
         </div>
         <div class="blocoLinear">
-          <textarea class="descricao" readonly>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</textarea>
-          <button class="botao-editar" onclick="toggleEdicao(this)">Editar</button>
+          <button class="normal" onclick="toggleEdicao(this)">Editar</button>
+          <textarea class="trava" id="vantagem3" placeholder="Espaço para Vantagens." readonly></textarea>
+          <input type="number" class="campo curto trava" id="pmGasto3" placeholder="0" readonly>
+          <button class="destaque publicar" id="Vantagem">Chat</button>
         </div>
         <div class="blocoLinear">
-          <textarea class="descricao" readonly>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</textarea>
-          <button class="botao-editar" onclick="toggleEdicao(this)">Editar</button>
+          <button class="normal" onclick="toggleEdicao(this)">Editar</button>
+          <textarea class="trava" id="vantagem4" placeholder="Espaço para Vantagens." readonly></textarea>
+          <input type="number" class="campo curto trava" id="pmGasto4" placeholder="0" readonly>
+          <button class="destaque publicar" id="Vantagem">Chat</button>
         </div>
         <div class="blocoLinear">
-          <textarea class="descricao" readonly>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</textarea>
-          <button class="botao-editar" onclick="toggleEdicao(this)">Editar</button>
+          <button class="normal" onclick="toggleEdicao(this)">Editar</button>
+          <textarea class="trava" id="vantagem5" placeholder="Espaço para Vantagens." readonly></textarea>
+          <input type="number" class="campo curto trava" id="pmGasto5" placeholder="0" readonly>
+          <button class="destaque publicar" id="Vantagem">Chat</button>
         </div>
         <div class="blocoLinear">
-          <textarea class="descricao" readonly>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</textarea>
-          <button class="botao-editar" onclick="toggleEdicao(this)">Editar</button>
+          <button class="normal" onclick="toggleEdicao(this)">Editar</button>
+          <textarea class="trava" id="vantagem6" placeholder="Espaço para Vantagens." readonly></textarea>
+          <input type="number" class="campo curto trava" id="pmGasto6" placeholder="0" readonly>
+          <button class="destaque publicar" id="Vantagem">Chat</button>
         </div>
         <div class="blocoLinear">
-          <textarea class="descricao" readonly>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</textarea>
-          <button class="botao-editar" onclick="toggleEdicao(this)">Editar</button>
+          <button class="normal" onclick="toggleEdicao(this)">Editar</button>
+          <textarea class="trava" id="vantagem7" placeholder="Espaço para Vantagens." readonly></textarea>
+          <input type="number" class="campo curto trava" id="pmGasto7" placeholder="0" readonly>
+          <button class="destaque publicar" id="Vantagem">Chat</button>
         </div>
         <div class="blocoLinear">
-          <textarea class="descricao" readonly>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</textarea>
-          <button class="botao-editar" onclick="toggleEdicao(this)">Editar</button>
+          <button class="normal" onclick="toggleEdicao(this)">Editar</button>
+          <textarea class="trava" id="vantagem8" placeholder="Espaço para Vantagens." readonly></textarea>
+          <input type="number" class="campo curto trava" id="pmGasto8" placeholder="0" readonly>
+          <button class="destaque publicar" id="Vantagem">Chat</button>
         </div>
         <div class="blocoLinear">
-          <textarea class="descricao" readonly>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</textarea>
-          <button class="botao-editar" onclick="toggleEdicao(this)">Editar</button>
+          <button class="normal" onclick="toggleEdicao(this)">Editar</button>
+          <textarea class="trava" id="vantagem9" placeholder="Espaço para Vantagens." readonly></textarea>
+          <input type="number" class="campo curto trava" id="pmGasto9" placeholder="0" readonly>
+          <button class="destaque publicar" id="Vantagem">Chat</button>
         </div>
         <div class="blocoLinear">
-          <textarea class="descricao" readonly>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</textarea>
-          <button class="botao-editar" onclick="toggleEdicao(this)">Editar</button>
+          <button class="normal" onclick="toggleEdicao(this)">Editar</button>
+          <textarea class="trava" id="vantagem10" placeholder="Espaço para Vantagens." readonly></textarea>
+          <input type="number" class="campo curto trava" id="pmGasto10" placeholder="0" readonly>
+          <button class="destaque publicar" id="Vantagem">Chat</button>
         </div>
 
         <div class="blocoLinear">
-          <span class="titulo">Devantagens</span>
+          <span class="titulo">Desvantagens</span>
+          <div class=" itemAtributo">
+            <span class="texticulo">Descritivo</span><span class="texticulo"> | </span>
+            <span class="texticulo">PM</span>&emsp;&emsp;&emsp;
+          </div>
         </div>
-
+        
         <div class="blocoLinear">
-          <textarea class="descricao" readonly>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</textarea>
-          <button class="botao-editar" onclick="toggleEdicao(this)">Editar</button>
-        </div>
-        <div class="blocoLinear">
-          <textarea class="descricao" readonly>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</textarea>
-          <button class="botao-editar" onclick="toggleEdicao(this)">Editar</button>
-        </div>
-        <div class="blocoLinear">
-          <textarea class="descricao" readonly>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</textarea>
-          <button class="botao-editar" onclick="toggleEdicao(this)">Editar</button>
+          <button class="normal" onclick="toggleEdicao(this)">Editar</button>
+          <textarea class="trava" id="desvantagem1" placeholder="Espaço para Desvantagens." readonly></textarea>
+          <input type="number" class="campo curto trava" id="pmGasto11" placeholder="0" readonly>
+          <button class="destaque publicar" id="Desvantagem">Chat</button>
         </div>
         <div class="blocoLinear">
-          <textarea class="descricao" readonly>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</textarea>
-          <button class="botao-editar" onclick="toggleEdicao(this)">Editar</button>
+          <button class="normal" onclick="toggleEdicao(this)">Editar</button>
+          <textarea class="trava" id="desvantagem1" placeholder="Espaço para Desvantagens." readonly></textarea>
+          <input type="number" class="campo curto trava" id="pmGasto12" placeholder="0" readonly>
+          <button class="destaque publicar" id="Desvantagem">Chat</button>
         </div>
         <div class="blocoLinear">
-          <textarea class="descricao" readonly>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</textarea>
-          <button class="botao-editar" onclick="toggleEdicao(this)">Editar</button>
+          <button class="normal" onclick="toggleEdicao(this)">Editar</button>
+          <textarea class="trava" id="desvantagem2" placeholder="Espaço para Desvantagens." readonly></textarea>
+          <input type="number" class="campo curto trava" id="pmGasto13" placeholder="0" readonly>
+          <button class="destaque publicar" id="Desvantagem">Chat</button>
+        </div>
+        <div class="blocoLinear">
+          <button class="normal" onclick="toggleEdicao(this)">Editar</button>
+          <textarea class="trava" id="desvantagem3" placeholder="Espaço para Desvantagens." readonly></textarea>
+          <input type="number" class="campo curto trava" id="pmGasto14" placeholder="0" readonly>
+          <button class="destaque publicar" id="Desvantagem">Chat</button>
+        </div>
+        <div class="blocoLinear">
+          <button class="normal" onclick="toggleEdicao(this)">Editar</button>
+          <textarea class="trava" id="desvantagem4" placeholder="Espaço para Desvantagens." readonly></textarea>
+          <input type="number" class="campo curto trava" id="pmGasto15" placeholder="0" readonly>
+          <button class="destaque publicar" id="Desvantagem">Chat</button>
         </div>
 
         <div class="blocoLinear">
           <span class="titulo">Técnicas</span>
+          <div class=" itemAtributo">
+            <span class="texticulo">Descritivo</span><span class="texticulo"> | </span>
+            <span class="texticulo">PM</span>&emsp;&emsp;&emsp;
+          </div>
         </div>
 
         <div class="blocoLinear">
-          <textarea class="descricao" readonly>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</textarea>
-          <button class="botao-editar" onclick="toggleEdicao(this)">Editar</button>
+          <button class="normal" onclick="toggleEdicao(this)">Editar</button>
+          <textarea class="trava" id="tecnica1" placeholder="Espaço para Técnicas." readonly></textarea>
+          <input type="number" class="campo curto trava" id="pmGasto16" placeholder="0" readonly>
+          <button class="destaque publicar" id="Técnica">Chat</button>
         </div>
         <div class="blocoLinear">
-          <textarea class="descricao" readonly>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</textarea>
-          <button class="botao-editar" onclick="toggleEdicao(this)">Editar</button>
+          <button class="normal" onclick="toggleEdicao(this)">Editar</button>
+          <textarea class="trava" id="tecnica2" placeholder="Espaço para Técnicas." readonly></textarea>
+          <input type="number" class="campo curto trava" id="pmGasto17" placeholder="0" readonly>
+          <button class="destaque publicar" id="Técnica">Chat</button>
         </div>
         <div class="blocoLinear">
-          <textarea class="descricao" readonly>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</textarea>
-          <button class="botao-editar" onclick="toggleEdicao(this)">Editar</button>
+          <button class="normal" onclick="toggleEdicao(this)">Editar</button>
+          <textarea class="trava" id="tecnica3" placeholder="Espaço para Técnicas." readonly></textarea>
+          <input type="number" class="campo curto trava" id="pmGasto18" placeholder="0" readonly>
+          <button class="destaque publicar" id="Técnica">Chat</button>
         </div>
         <div class="blocoLinear">
-          <textarea class="descricao" readonly>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</textarea>
-          <button class="botao-editar" onclick="toggleEdicao(this)">Editar</button>
+          <button class="normal" onclick="toggleEdicao(this)">Editar</button>
+          <textarea class="trava" id="tecnica4" placeholder="Espaço para Técnicas." readonly></textarea>
+          <input type="number" class="campo curto trava" id="pmGasto19" placeholder="0" readonly>
+          <button class="destaque publicar" id="Técnica">Chat</button>
         </div>
         <div class="blocoLinear">
-          <textarea class="descricao" readonly>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</textarea>
-          <button class="botao-editar" onclick="toggleEdicao(this)">Editar</button>
-        </div>        
+          <button class="normal" onclick="toggleEdicao(this)">Editar</button>
+          <textarea class="trava" id="tecnica5" placeholder="Espaço para Técnicas." readonly></textarea>
+          <input type="number" class="campo curto trava" id="pmGasto20" placeholder="0" readonly>
+          <button class="destaque publicar" id="Técnica">Chat</button>
+        </div>
       </div>
 
+    </section>
+
+    <section class="fichaNotas">
+      <div>
+        <span class="subtitulo">Anotações</span>
+        <textarea class="notas" placeholder="Espaço para anotações do Jogador."></textarea>
+      </div>
     </section>
 
   </div>
 
   <script>
-    // Função para rolar os dados
-    function rollDice(field) {
-      var numberOfDice = parseInt(document.querySelector('input[name="dados"]:checked').value);
-      var bonus = parseInt(document.getElementById(field).value);
-      var critico = parseInt(document.getElementById(field + "Critico").value);
-      var total = 0;
-      var rolls = [];
-      for (var i = 0; i < numberOfDice; i++) {
-        var roll = Math.floor(Math.random() * 6) + 1;
-        rolls.push(roll);
-        if (roll >= critico) {
-          total += roll + bonus;
-        } else {
-          total += roll;
-        }
+
+    // FUNÇÃO TEMA CLARO/ESCURO
+    
+    const cliqueTema = document.getElementById("claroEscuro");
+    const body = document.querySelector("body");
+    const imagemBotaoTrocaDeTema = document.querySelector(".iconeTema");
+    const imagemLogoTrocaDeTema = document.querySelector(".logotipo");
+    cliqueTema.addEventListener("click", () => {
+      const modoEscuroAtivo = body.classList.contains("darkMode");
+      body.classList.toggle("darkMode");
+      if (modoEscuroAtivo) {
+        imagemBotaoTrocaDeTema.setAttribute("src", "./src/img/botao-moon.png");
+        imagemLogoTrocaDeTema.setAttribute("src", "./src/img/logo-3det-preto.png");
+      } else {
+        imagemBotaoTrocaDeTema.setAttribute("src", "./src/img/botao-sun.png");
+        imagemLogoTrocaDeTema.setAttribute("src", "./src/img/logo-3det-branco.png");
       }
-      var rollsText = rolls.join(', ');
-      var result = "Valores: " + rollsText;
-      result += "<br>Soma c/ Críticos: " + total;
-      document.getElementById("result").innerHTML = result;
+    });
+
+    // FUNÇÃO UPAR PERSONAGEM
+
+    // Função para marcar todos os checkboxes até o checkboxNumber
+    function checkLevels(checkboxNumber) {
+      for (let i = 1; i <= checkboxNumber; i++) {
+        document.getElementById(`checkbox${i}`).checked = true;
+      }
     }
-  
-    // Função para Debitar Recursos
+    // Função para aumentar o nível
+    function levelUp() {
+      let allChecked = true;
+      let checkboxes = document.querySelectorAll('.checkbox');
+      checkboxes.forEach(checkbox => {
+        if (!checkbox.checked) {
+          allChecked = false;
+        }
+      });
+      if (allChecked) {
+        let currentLevel = parseInt(document.getElementById('levelInput').value);
+        currentLevel++;
+        document.getElementById('levelInput').value = currentLevel;
+        checkboxes.forEach(checkbox => {
+          checkbox.checked = false;
+        });
+        showModal("<span class='modalTitulo'>Level UPA!</span><p>" + "Parabéns!<p>Você UPOU e agora tem +1pto para distribuir na ficha.");
+      } else {
+        showModal("<span class='modalTitulo'>Level UPA!</span><p>" + "Ainda lhe falta Experiência para UPAR!<p>1pto de Personagem custa 10xp.");
+      }
+    }
+
+    // FUNÇÃO ALTERAR RECURSOS
+
+    /* Selecionando os elementos */
+    const poderInput = document.getElementById("poder");
+    const habilidadeInput = document.getElementById("habilidade");
+    const resistanceInput = document.getElementById("resistance");
+    const paExtraInput = document.getElementById("paExtra");
+    const pmExtraInput = document.getElementById("pmExtra");
+    const pvExtraInput = document.getElementById("pvExtra");
+    const paTotalLabel = document.getElementById("paTotal");
+    const paAtualLabel = document.getElementById("paAtual");
+    const pmTotalLabel = document.getElementById("pmTotal");
+    const pmAtualLabel = document.getElementById("pmAtual");
+    const pvTotalLabel = document.getElementById("pvTotal");
+    const pvAtualLabel = document.getElementById("pvAtual");
+    /* Atualizar Rótulos com Recursos Extras */
+    function updateLabels() {
+      const poderValue = parseInt(poderInput.value);
+      const habilidadeValue = parseInt(habilidadeInput.value);
+      const resistanceValue = parseInt(resistanceInput.value);
+      /* Atualizando rótulos */
+      const paTotal = poderValue + parseInt(paExtraInput.value) || 1;
+      paTotalLabel.textContent = paTotal;
+      paAtualLabel.textContent = document.getElementById("paAtual").value;
+      const pmTotal = habilidadeValue * 5 + parseInt(pmExtraInput.value) || 1;
+      pmTotalLabel.textContent = pmTotal;
+      pmAtualLabel.textContent = document.getElementById("pmAtual").value;
+      const pvTotal = resistanceValue * 5 + parseInt(pvExtraInput.value) || 1;
+      pvTotalLabel.textContent = pvTotal;
+      pvAtualLabel.textContent = document.getElementById("pvAtual").value;
+    }
+    /* Recarregar os rótulos de Recursos */
+    updateLabels();
+    /* Detectar alterações dos Atributos */
+    poderInput.addEventListener("input", updateLabels);
+    habilidadeInput.addEventListener("input", updateLabels);
+    resistanceInput.addEventListener("input", updateLabels);
+    paExtraInput.addEventListener("input", updateLabels);
+    pmExtraInput.addEventListener("input", updateLabels);
+    pvExtraInput.addEventListener("input", updateLabels);
+
+    // FUNÇÃO REDUZIR RECURSOS
+
     function debitarRecurso(field) {
-      var valor = prompt("Digite o valor a ser debitado:");
+      var valor = prompt("Quantos Pontos serão reduzidos nesta ação?");
       if (valor !== null) {
         var input = document.getElementById(field);
         var newValue = parseInt(input.value) - parseInt(valor);
         if (newValue < 0) {
-          alert("O valor não pode ser menor que zero!");
+          alert("Seus Pontos não podem cair abaixo de ZERO!");
         } else {
           input.value = newValue;
           updateLabels();
         }
       }
     }
-  
-    // Função para Descanso Curto
+
+    // FUNÇÃO DESCANSO CURTO
+
     function descansoCurto() {
       var pmInput = document.getElementById("pmAtual");
       var pvInput = document.getElementById("pvAtual");
       var habilidadeValue = parseInt(document.getElementById("habilidade").value);
       var resistanceValue = parseInt(document.getElementById("resistance").value);
-      var maxhabilidade = parseInt(document.getElementById("habilidade").value) * 5;
-      var maxResistance = parseInt(document.getElementById("resistance").value) * 5;
+      var maxhabilidade = (parseInt(document.getElementById("habilidade").value) * 5) + parseInt(pmExtraInput.value);
+      var maxResistance = (parseInt(document.getElementById("resistance").value) * 5) + parseInt(pvExtraInput.value);
       var currentPm = parseInt(pmInput.value);
       var currentPv = parseInt(pvInput.value);
       var updatedPm = currentPm + habilidadeValue;
@@ -639,86 +952,158 @@
       pvInput.value = updatedPv <= maxResistance ? updatedPv : maxResistance;
       updateLabels();
     }
-  
-    // Função para Descanso Longo
+
+    // FUNÇÃO DESCANSO LONGO
+
     function descansoLongo() {
       var poderValue = parseInt(document.getElementById("poder").value);
       var habilidadeValue = parseInt(document.getElementById("habilidade").value);
       var resistanceValue = parseInt(document.getElementById("resistance").value);
-      var maxhabilidade = parseInt(document.getElementById("habilidade").value) * 5;
-      var maxResistance = parseInt(document.getElementById("resistance").value) * 5;
-      document.getElementById("paAtual").value = poderValue;
+      var maxpoder = (parseInt(document.getElementById("poder").value)) + parseInt(paExtraInput.value);
+      var maxhabilidade = (parseInt(document.getElementById("habilidade").value) * 5) + parseInt(pmExtraInput.value);
+      var maxResistance = (parseInt(document.getElementById("resistance").value) * 5) + parseInt(pvExtraInput.value);
+      document.getElementById("paAtual").value = maxpoder;
       document.getElementById("pmAtual").value = maxhabilidade;
       document.getElementById("pvAtual").value = maxResistance;
       updateLabels();
     }
   
-    // Selecionando os elementos de input
-    const poderInput = document.getElementById("poder");
-    const habilidadeInput = document.getElementById("habilidade");
-    const resistanceInput = document.getElementById("resistance");
-    const paExtraInput = document.getElementById("paExtra");
-    const pmExtraInput = document.getElementById("pmExtra");
-    const pvExtraInput = document.getElementById("pvExtra");
-  
-    // Selecionando os elementos de rótulo
-    const paTotalLabel = document.getElementById("paTotal");
-    const paAtualLabel = document.getElementById("paAtual");
-    const pmTotalLabel = document.getElementById("pmTotal");
-    const pmAtualLabel = document.getElementById("pmAtual");
-    const pvTotalLabel = document.getElementById("pvTotal");
-    const pvAtualLabel = document.getElementById("pvAtual");
-  
-    // Função para atualizar os rótulos
-    function updateLabels() {
-      // Atualizando rótulos de Pontos de Ação
-      paTotalLabel.textContent = parseInt(poderInput.value) + parseInt(paExtraInput.value);
-      paAtualLabel.textContent = document.getElementById("paAtual").value;
-      // Atualizando rótulos de Pontos de Mana
-      pmTotalLabel.textContent = parseInt(habilidadeInput.value) * 5 + parseInt(pmExtraInput.value);
-      pmAtualLabel.textContent = document.getElementById("pmAtual").value;
-      // Atualizando rótulos de Pontos de Vida
-      pvTotalLabel.textContent = parseInt(resistanceInput.value) * 5 + parseInt(pvExtraInput.value);
-      pvAtualLabel.textContent = document.getElementById("pvAtual").value;
-    }
-  
-    // Chamando a função inicialmente para configurar os rótulos corretamente
-    updateLabels();
-  
-    // Adicionando event listeners para detectar alterações nos numeros numéricos
-    poderInput.addEventListener("input", updateLabels);
-    habilidadeInput.addEventListener("input", updateLabels);
-    resistanceInput.addEventListener("input", updateLabels);
-    paExtraInput.addEventListener("input", updateLabels);
-    pmExtraInput.addEventListener("input", updateLabels);
-    pvExtraInput.addEventListener("input", updateLabels);
-  
-    // Função Resetar XP
-    function desmarcarTodos(groupName) {
-      var checkboxes = document.getElementsByName(groupName);
-      checkboxes.forEach(function(checkbox) {
-        checkbox.checked = false;
-      });
-    }
-  
-    // Função Editar Características
-  
+    // FUNÇÃO EDITAR/SALVAR CARACTERÍSTICAS
+
     function toggleEdicao(botao) {
-      var descricao = botao.parentElement;
-      var textoDescricao = descricao.querySelector('.descricao');
-      if (textoDescricao.readOnly) {
-        textoDescricao.readOnly = false;
-        textoDescricao.style.backgroundColor = '#eeeeee';
-        textoDescricao.style.height = '100px';
+      var caracteristicas = botao.parentElement;
+      var textoCapacidade = caracteristicas.querySelector('textarea');
+      var pmCapacidade = caracteristicas.querySelector('input[type="number"]');
+      if (textoCapacidade.readOnly) {
+        textoCapacidade.readOnly = false;
+        textoCapacidade.classList.remove('trava');
+        pmCapacidade.readOnly = false;
+        pmCapacidade.classList.remove('trava');
+
         botao.textContent = 'Salvar';
       } else {
-        textoDescricao.readOnly = true;
-        textoDescricao.style.backgroundColor = '#ffffff';
-        textoDescricao.style.height = '16px';
+        textoCapacidade.readOnly = true;
+        textoCapacidade.classList.add('trava');
+        pmCapacidade.readOnly = true;
+        pmCapacidade.classList.add('trava');
         botao.textContent = 'Editar';
       }
     }
-  </script>  
+
+    // FUNÇÃO LANÇAR CARACTERÍSTICAS E GASTAR PM
+
+    /* Exibir descritivo e debitar PM */
+    function publicarConteudo(textarea, pmGastoInput, pmAtualInput, buttonId) {
+      var conteudo = textarea.value;
+      var pmGasto = parseInt(pmGastoInput.value);
+      var pmAtual = parseInt(pmAtualInput.value);
+      var buttonClicked = document.getElementById(buttonId).id;
+
+      if (pmGasto > 0) {
+        if (pmAtual >= pmGasto) {
+          pmAtualInput.value = pmAtual - pmGasto;
+          updateLabels();
+          showModal("<span class='modalTitulo'>" + buttonClicked + "</span><p>" + conteudo + "<p>" + pmGasto + " PM gasto(s) dos seus Recursos!");
+        } else {
+          showModal("<span class='modalTitulo'>" + buttonClicked + "</span><p>" + "Você não tem PM suficiente para esta ação!");
+        }
+      } else {
+        showModal("<span class='modalTitulo'>" + buttonClicked + "</span><p>" + "Você não especificou a quantidade de PM a ser gasta!");
+      }
+    }
+    /* Inserindo os eventos Exibir no botão Chat */
+    document.querySelectorAll('.publicar').forEach(function(botao) {
+      botao.addEventListener('click', function() {
+        var divPai = this.parentElement;
+        var textarea = divPai.querySelector('textarea');
+        var pmGastoInput = divPai.querySelector('input[type="number"]');
+        var pmAtualInput = document.getElementById('pmAtual');
+        var buttonId = this.id;
+        publicarConteudo(textarea, pmGastoInput, pmAtualInput, buttonId);
+      });
+    });
+
+    // FUNÇÃO ROLAR DADOS
+
+    function rollDice(field) {
+      var attributeName = "";
+      /* Identifica o atributo rolado */
+      switch(field) {
+        case "poder":
+          attributeName = "<span class='modalTitulo'>Teste de Poder</span><br>";
+          break;
+        case "habilidade":
+          attributeName = "<span class='modalTitulo'>Teste de Habilidade</span><br>";
+          break;
+        case "resistance":
+          attributeName = "<span class='modalTitulo'>Teste de Resistência</span><br>";
+          break;
+        default:
+          attributeName = "Teste de Atributo";
+      }
+      var numberOfDice = parseInt(document.querySelector('input[name="dados"]:checked').value);
+      var baseBonus = parseInt(document.getElementById(field).value);
+      var tempBonus = parseInt(document.getElementById(field + "Temp").value);
+      var critico = parseInt(document.getElementById(field + "Critico").value);
+      var total = 0;
+      var rolls = [];
+      var criticalCount = 0; // Contador de críticos
+      for (var i = 0; i < numberOfDice; i++) {
+        var roll = Math.floor(Math.random() * 6) + 1;
+        rolls.push(roll);
+        if (roll >= critico) {
+          criticalCount++; // Incrementa o contador de críticos
+        }
+        total += roll;
+      }
+      // Aplica o bônus base e o bônus temp
+      total += (baseBonus + tempBonus) * (criticalCount + 1);
+      var rollsText = rolls.join(', ');
+      var bonusTotal = (baseBonus + tempBonus) * (criticalCount + 1);
+      var result = attributeName + "<br>Rolagens: " + rollsText + "<br>Bônus Total: " + bonusTotal + "<br>Com Críticos: " + total;
+      // Exibir o resultado em um modal
+      showModal(result);
+    }
+
+    // FUNÇÃO JANELA MODAL
+
+    /* Exibir modal com o conteúdo fornecido */
+    function showModal(content) {
+      var modal = document.createElement('div');
+      modal.className = 'overlay';
+      var modalContent = document.createElement('div');
+      modalContent.className = 'modal';
+      var closeButton = document.createElement('span');
+      closeButton.className = 'close';
+      closeButton.innerHTML = '&times;';
+      closeButton.addEventListener('click', function() {
+        modal.remove();
+      });
+      modalContent.appendChild(closeButton);
+      var modalBody = document.createElement('div');
+      modalBody.className = 'modalConteudo';
+      modalBody.innerHTML = content;
+      modalContent.appendChild(modalBody);
+      modal.appendChild(modalContent);
+      document.body.appendChild(modal);
+    }
+    function showModal(content) {
+      /* Criar o modal */
+      var modal = document.createElement('div');
+      modal.className = 'overlay';
+      modal.addEventListener('click', function(event) {
+        if (event.target === modal) {
+          modal.remove();
+        }
+      });
+      var modalContent = document.createElement('div');
+      modalContent.className = 'modal';
+      modalContent.innerHTML = '<div class="modalConteudo">' + content + '</div>';
+      modal.appendChild(modalContent);
+      document.body.appendChild(modal);
+    }
+
+  </script> 
 
 </body>
 </html>
